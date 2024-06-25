@@ -1,3 +1,3 @@
 
-[VSCode](https://visualstudio.microsoft.com/ko/)
+[VSCode](https://code.visualstudio.com/)
 
