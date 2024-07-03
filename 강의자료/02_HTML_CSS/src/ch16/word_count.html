@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptates quibusdam facilis vitae, aliquid omnis possimus incidunt sed perspiciatis nihil cum mollitia fuga dignissimos voluptas voluptatibus, beatae iste consectetur animi!</p>
+    <p id="word_count"></p>
+    <script>
+        let text = document.querySelector('#content').innerText;
+        text = text.trim().toLowerCase();
+        let curIndex = 0; 
+        let wordCount = 0; // 단어의 카운트 변수
+        let findWord = "ipsum";
+        console.log(text);
+
+        // 반복 문을 이용해 찾을 문자열을 검사한다.
+        while(text.includes(findWord, curIndex) ){
+            var findIndex = text.indexOf(findWord, curIndex);
+            curIndex +=  findIndex + findWord.length;
+            wordCount++;
+        }
+        document.querySelector('#word_count').innerText = wordCount;
+    </script>
+</body>
+</html>
