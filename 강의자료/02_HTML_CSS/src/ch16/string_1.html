@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let length = text.length;
+        document.write('<p>'+ length +'</p>');
+        document.write('<p>'+ text.charAt(2) +'</p>');
+        document.write('<p>'+ text[2] +'</p>');
+        text[2] ="A";
+        document.write('<p>'+ text +'</p>');
+
+        let text1 = "Apple, Banana, Kiwi";
+        let part = text1.slice(7);
+        document.write('<p> text1 = '+ text1 +'</p>');
+        document.write('<p> part = '+ part +'</p>');
+        let part2 = text1.slice(-12);
+        document.write('<p> part2 = '+ part2 +'</p>');
+        // substring
+        let part3 = text1.substr( 7, 6);
+        document.write('<p> part2 = '+ part3 +'</p>');
+        // 대문자 -> 소문자..... 소문자 ->대문자
+
+        let text2 = "Hello World!"; 
+        let part21 = text2.toLowerCase();
+        document.write('<p> 소문자 = '+ part21 +'</p>');
+        let part22 = text2.toUpperCase();
+        document.write('<p> 대문자 = '+ part22 +'</p>');
+        // concat
+        // text = "Hello" + " " + "World!";
+        // text = "Hello".concat(" ", "World!");
+
+        // 공백을 삭제...
+        //  "     Hello"
+        let text3 = "             Hello         ";
+        let part31 = text3.trim();
+        document.write('<p>'+ part31.length +'</p>');
+        let part32 = text3.trimEnd();
+        document.write('<p>'+ part32.length +'</p>');
+    </script>
+</body>
+</html>
