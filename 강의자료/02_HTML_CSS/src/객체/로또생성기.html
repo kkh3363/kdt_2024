@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <p id="output"></p>
     <button id="btn1">로또 생성</button>
     <script>
         function generateLotto (){
@@ -26,10 +28,13 @@
                     lottos.push(num);
 
             }
-            document.write("<p>" + lottos +"</p>");
+            document.querySelector('#output').innerHTML = lottos ;
         }
+        // btn1 아이디를 갖는 요소를 찾아라....
+        var btn = document.querySelector('#btn1');
         
-
+        // 이벤트 리스너에 연결하기..
+        btn.addEventListener('click', generateLotto);
     </script>
 </body>
 </html>
