@@ -1,0 +1,25 @@
+<!-- 하나의 이벤트에 여러개의 함수 연결  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 이벤트 예제...</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, at possimus facere animi assumenda mollitia dicta sapiente deserunt fugiat, dolore saepe eius voluptatum. Recusandae, non totam? Praesentium perspiciatis laudantium dolorem?</p>
+    <p id="demo"> </p>
+    <script>
+        document.addEventListener("click", myFunc1);
+        document.addEventListener("click", myFunc2);
+
+        function myFunc1(){
+            document.querySelector('#demo').innerHTML += "첫번째 함수 실행<br>";
+        }
+        function myFunc2(){
+            document.querySelector('#demo').innerHTML += "2nd 함수 실행<br>";
+        }
+    </script>
+</body>
+</html>
