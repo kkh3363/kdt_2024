@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">로또 생성</button>
+    <script>
+        function generateLotto (){
+            var lottos = new Array();
+            var nMaxCount = 5;
+
+            while ( lottos.length < nMaxCount ){
+                var sameNum = false;
+                var num = Math.floor(Math.random() * 45) + 1;
+
+                for ( i=0; i < lottos.length; i++){
+                    if ( num === lottos[i]){
+                        console.log("중복수 :" + num);
+                        sameNum = true;
+                    }
+                }
+                if ( sameNum == false)
+                    lottos.push(num);
+
+            }
+            document.write("<p>" + lottos +"</p>");
+        }
+        
+
+    </script>
+</body>
+</html>
