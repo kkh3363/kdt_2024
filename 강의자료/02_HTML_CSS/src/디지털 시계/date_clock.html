@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Clock</title>
+  <link rel="stylesheet" href="date_clock.css">
+  <style>
+    
+
+    .clock{
+      min-width: 360px;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid white;
+    }
+
+    .time{
+      display: inline-block;
+    }
+
+    .hour{
+      display: inline-block;
+      font-size: 72px;
+    }
+
+    .sec{
+      display: inline-block;
+      padding-left: 15px;
+      font-size: 48px;
+    }
+
+    .today{
+      margin-top: 10px;
+      color: rgba(175, 175, 175, 0.514);
+      font-size: 32px;
+    }
+
+    .day{
+      color: rgba(175, 175, 175, 0.514);
+      font-size: 32px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div id="time" class="time">
+      <span id="hour" class="hour"></span>
+      <span id="sec"class="sec"></span>
+    </div>
+    <div id="today" class="today"></div>
+    <div id="day" class="day"></div>
+    
+  </div>
+  <script>
+    // 요소 선택
+    const hourDiv = document.getElementById('hour');
+    const secDiv = document.getElementById('sec');
+    const todayDiv = document.getElementById('today');
+    const dayDiv = document.getElementById('day');
+    
+
+    // getTime 함수
+    function getTime(){
+      let now = new Date();
+      let daylist = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+      let year = now.getFullYear();
+      let month = now.getMonth() + 1;
+      let date = now.getDate();
+      let day = daylist[now.getDay()]
+      let hour = now.getHours();
+      let minute = now.getMinutes();
+      let second = now.getSeconds();
+
+      month = month < 10 ? `0${month}` : month;
+      date = date < 10 ? `0${date}` : date;
+      hour = hour < 10 ? `0${hour}` : hour;
+      minute = minute < 10 ? `0${minute}` : minute;
+      second = second < 10 ? `0${second}` : second;
+
+      todayDiv.innerHTML = `${year}년 ${month}월 ${date}일`
+      dayDiv.textContent = `${day}`
+      hourDiv.textContent = `${hour}:${minute}`
+      secDiv.textContent = `${second}`
+
+    }
+
+    // setInterval 메소드
+    getTime()
+    setInterval(getTime, 1000);
+  </script>
+</body>
+</html>
