@@ -6,4 +6,4 @@
 -----------------------------------------
 # W3Schools
 - [Dom Event](https://www.w3schools.com/jsref/dom_obj_event.asp)
--[Template literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
+- [Template literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
