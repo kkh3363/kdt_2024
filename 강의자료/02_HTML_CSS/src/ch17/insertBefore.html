@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>노드 리스트</h1>
+    <p>html</p>
+    <p>css</p>
+    <p>Javascript</p>
+    <hr>
+    <a href="#" id="action"> 추가 </a>
+    <script>
+        document.querySelector( "#action").addEventListener("click", insText);
+        function insText () {
+            let tsNode = document.createElement('p');
+            let tsTextNode = document.createTextNode('Jquery');
+            tsNode.appendChild(tsTextNode);
+
+            let pList = document.querySelectorAll("p")[1];
+            
+            document.body.insertBefore(tsNode, pList );
+        }
+        
+    </script>
+</body>
+</html>
