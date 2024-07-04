@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="container">
+    <h1>리스트에 추가하기...</h1>
+    <form>
+        <label for="intext">추가 항목 :</label>
+        <input type="text" id="intext">
+        <button id="save">추 가</button>
+    </form>
+    <hr>
+    <div id="view">
+        <ul id="in_ul">
+
+        </ul>
+    </div>
+</div>
+    <script>
+
+        btn1 = document.querySelector('#save');
+        /*
+        btn1.addEventListener('click' , eventFunc );
+        function eventFunc() {
+            event.preventDefault();
+            let id_text =  document.querySelector('#intext');
+            addList( id_text.value );
+        } */
+        btn1.addEventListener('click' , (e)=>{
+            e.preventDefault();
+            let id_text =  document.querySelector('#intext');
+            addList( id_text.value );
+            
+        } );
+        
+        function addList(inputText) {
+            let newList = document.createElement('li');
+            let newText = document.createTextNode( inputText);
+            newList.appendChild(newText );
+            document.querySelector('#in_ul').appendChild(newList);
+
+        }
+    </script>
+</body>
+</html>
