@@ -4,7 +4,7 @@
 - [교재 소스코드](https://github.com/Eun-Sook-Kim/doit_html_css_javascript)
 - [W3Schools html](https://www.w3schools.com/html/default.asp)
 -----------------------------------------
-# W3Schools
+### W3Schools
 - [Dom Event](https://www.w3schools.com/jsref/dom_obj_event.asp)
 - [Template literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
   - 템플릿 리터럴은 내장된 표현식을 허용하는 문자열 리터럴입니다.
