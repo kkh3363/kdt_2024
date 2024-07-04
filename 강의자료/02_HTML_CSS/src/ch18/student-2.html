@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="student.css" >
+</head>
+<body>
+    <div id="container">
+        <h1>수강생 명단</h1>
+    
+        <div id="result"></div>
+      </div>
+      <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "student.json");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let students = JSON.parse(xhr.responseText);
+                renderHTML(students);
+            }
+        }
+        function renderHTML(contents) {
+            let output = "";
+            for (let content of contents) {
+                output += `
+                <h2>${content.name}</h2>
+                <ul>
+                    <li>전공 : ${content.major}</li>
+                    <li>학년 : ${content.grade}</li>
+                </ul>
+                <hr>
+                `;
+            }
+            document.getElementById("result").innerHTML = output;
+            }
+      </script>
+</body>
+</html>
