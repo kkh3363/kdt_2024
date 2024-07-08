@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+         $(document).ready(function () {
+            $('button').click(function(){
+                $('#box').css({
+                    width: 200,
+                    height: 100,
+                    background: 'red',
+                    position: 'absolute',
+                    left: 50,
+                    top: 10
+                }).animate({
+                    width: '-=50',
+                    height: '+=300',
+                    left : '+=300',
+                    opacity: 0.5
+                }, 1000);
+            });
+            
+         });
+    </script>
+    
+</head>
+<body>
+    <button> 애니메이션....</button>
+    <div id="box"></div>
+</body>
+</html>
