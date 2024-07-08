@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                //alert( "Backgroud-color : " + $('p').css('background-color') );
+                $('h1').css('background-color','red')
+                    .css('color', 'white');
+                $('h2').css( {
+                    'background-color' : 'yellow',
+                    'font-size': '200%'
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Heading 0</h1>
+    <h2>Heading 1</h2>
+    <p style="background-color: red;"> this is paragraph</p>
+
+    <button>Return background-color of p</button>
+</body>
+</html>
