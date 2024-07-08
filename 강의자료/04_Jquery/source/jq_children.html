@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('div').children().css({'color': 'red', 'border':'2px solid red'});
+        });
+    </script>
+    <style>
+         .top * {  display: block; border: 2px solid lightgrey;
+             color: lightgrey;  padding: 5px;  margin: 15px;  }
+    </style>
+</head>
+<body>
+    <div class="top" style="width:500px;">div (current element) 
+        <p>p (child)
+          <span>span (grandchild)</span>   
+        </p>
+        <p>p (child)
+          <span>span (grandchild)</span>
+        </p> 
+    </div>
+</body>
+</html>
