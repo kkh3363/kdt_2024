@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.item:nth-child(1) { background: blueviolet; }
+        div.item:nth-child(2) { background: pink; }
+        div.item:nth-child(3) { background-color: burlywood; }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            let width = $('[data-role="slider"]').attr('data-width');
+            let height = $('[data-role="slider"]').attr('data-height');
+            let count = $('[data-role="slider"] div.item').length;
+            //console.log("width :" + width);
+            // 스타일을 적용합니다.
+            $('[data-role="slider"]').css({
+                position: 'relative',
+                overflow: 'hidden',
+                width: width,
+                height: height
+            }).find('.container').css({
+                position: 'absolute',
+                width: count * width,
+                overflow: 'hidden'
+            }).find('.item').css({
+                width: width,
+                height: height,
+                float: 'left'
+            });
+
+            let currentPage = 0;
+            let changePage = function () {
+                $('[data-role="slider"] > .container').animate({
+                    left: -currentPage * width
+                }, 500);
+            };
+            // 이벤트를 연결합니다.
+            $('#left-button').click(function () { 
+                if (currentPage > 0) {
+                    // 왼쪽으로 이동
+                    currentPage = currentPage - 1;
+                    changePage();
+                }
+            });
+
+            $('#right-button').click(function () { 
+                if (currentPage < count - 1) {
+                    // 오른쪽으로 이동
+                    currentPage = currentPage + 1;
+                    changePage();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div data-role="slider" data-width="500" data-height="300">
+        <div class="container">
+            <div class="item">
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis suscipit iusto maxime perspiciatis illum. Debitis, distinctio et laborum, similique amet itaque quibusdam, sequi sint ullam consequatur earum nam iusto natus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. In tempore officia omnis, optio cumque ratione ipsam sapiente doloremque modi. Eligendi tenetur reprehenderit laboriosam possimus labore beatae eum! Quod, consectetur sequi!
+                </p>
+            </div>
+            <div class="item">
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis suscipit iusto maxime perspiciatis illum. Debitis, distinctio et laborum, similique amet itaque quibusdam, sequi sint ullam consequatur earum nam iusto natus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. In tempore officia omnis, optio cumque ratione ipsam sapiente doloremque modi. Eligendi tenetur reprehenderit laboriosam possimus labore beatae eum! Quod, consectetur sequi!
+                </p>
+            </div>
+            <div class="item">
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis suscipit iusto maxime perspiciatis illum. Debitis, distinctio et laborum, similique amet itaque quibusdam, sequi sint ullam consequatur earum nam iusto natus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. In tempore officia omnis, optio cumque ratione ipsam sapiente doloremque modi. Eligendi tenetur reprehenderit laboriosam possimus labore beatae eum! Quod, consectetur sequi!
+                </p>
+            </div>
+        </div>
+    </div>
+    <button id="left-button"><==</button>
+    <button id="right-button">==></button>
+</body>
+</html>
