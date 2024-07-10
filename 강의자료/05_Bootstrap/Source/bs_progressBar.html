@@ -11,9 +11,24 @@
 <div class="container mt-3">
   <h2>프로그레스 바</h2>
   <div class="progress mb-3">
-    <div id="prog_1" class="progress-bar" style="width:70%"></div>
+    <div id="prog_1" class="progress-bar progress-bar-striped progress-bar-animated" style="width:70%"></div>
   </div>
-  <button id="btn_start" class="btn btn-success">시작</button>
+  <button id="btn_start" class="btn btn-success ">시작</button>
+  <div class="progress mb-3">
+    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:70%">70%</div>
+  </div>
+  <div class="progress">
+    <div class="progress-bar bg-success" style="width:40%">
+      Free Space
+    </div>
+    <div class="progress-bar bg-warning" style="width:10%">
+      Warning
+    </div>
+    <div class="progress-bar bg-danger" style="width:20%">
+      Danger
+    </div>
+  </div>
+  
   <p class="mb-5"></p>
 </div>
 <script>
@@ -25,11 +40,15 @@
   });
   function startProgress() {
     if ( isRun == false) {
+      isRun = true;
       setInterval(() => {
-        document.querySelector("#prog_1").style.width = widthSum +'%';
+        msg = widthSum +'%';
+        document.querySelector("#prog_1").style.width = msg;
+        document.querySelector("#prog_1").innerText = msg;
+        widthSum += 10;
         if ( widthSum > 100 )
           widthSum = 0;
-          widthSum += 10;
+         
       }, 1000);
     }
   }
