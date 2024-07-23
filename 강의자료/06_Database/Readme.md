@@ -1,2 +1,2 @@
 ### Mysql
-- [Mysql Community Server](https://dev.mysql.com/downloads/mysql/)
+- [Mysql Community Server](https://dev.mysql.com/downloads/windows/installer/8.0.html)
