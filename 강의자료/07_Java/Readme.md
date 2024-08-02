@@ -5,5 +5,5 @@
 
 
 ----------------
-- [Star Uml](http://210.125.213.6/pds/StarUML_Setup_6.2.1.exe)
+- [Star Uml](http://210.125.213.6/pds/StarUML.zip)
 
