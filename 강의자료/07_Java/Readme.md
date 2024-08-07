@@ -7,3 +7,5 @@
 ----------------
 - [Star Uml](http://210.125.213.6/pds/StarUML.zip)
 
+----------------
+- [자바 버전별 특징](https://www.freeblog-web.info/post/74?blogId=1)
