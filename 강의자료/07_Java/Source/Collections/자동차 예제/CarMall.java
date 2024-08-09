@@ -25,7 +25,7 @@ public class CarMall {
 			Car newCar = new Car();
 			newCar.setModel(st.nextToken().trim());
 			newCar.setMadeCompany(st.nextToken().trim());
-			newCar.setGetnYear(Integer.parseInt(st.nextToken().trim()));
+			newCar.setGenYear(Integer.parseInt(st.nextToken().trim()));
 			newCar.setMileage(Integer.parseInt(st.nextToken().trim()));
 			
 			cars.add(newCar);
