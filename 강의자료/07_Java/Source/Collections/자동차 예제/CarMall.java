@@ -31,12 +31,35 @@ public class CarMall {
 			cars.add(newCar);
 		}
 	}
-	public void showList() {
-		for( Car c : cars) {
-			String strFm= MessageFormat.format("[ {0} , {1}, {2}, {3} ]"
-					, c.getModel(), c.getMadeCompany(), c.getGenYear(), c.getMileage());
-			System.out.println(strFm);
+	public <E> void showList(List<E> e) {
+		for( E c : e) {
+			System.out.print (c.toString() + " ");
 		}
+		System.out.println();
+	}
+	
+	// 제조사 별로.....
+	public void sortCar(String strMode) {
+		LinkedList<Car> sortList = new LinkedList<>(cars);
+		Comparator<Car> comparater;
+		
+		strMode = strMode.toUpperCase();
+		
+		switch ( strMode ) {
+			case "MODEL" : comparater= Comparator.comparing(Car::getModel);break;
+			case "MADE_COMMPANY" : comparater= Comparator.comparing(Car::getMadeCompany);break;
+			case "GENYEAR" : comparater= Comparator.comparing(Car::getGenYear);break;
+			case "MILEAGE" : comparater= Comparator.comparing(Car::getMileage);break;
+			default :
+				return;
+		}
+				
+		
+		System.out.println("Befor Sort");
+		showList(sortList);
+		Collections.sort(sortList, comparater);
+		showList(sortList);
+		
 	}
 	
 }
