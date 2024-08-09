@@ -30,7 +30,7 @@ public class Car {
     public int getGenYear() {
         return genYear;
     }
-    public void setGetnYear(int genYear) {
+    public void setGenYear(int genYear) {
     	this.genYear = genYear;
     }
 
