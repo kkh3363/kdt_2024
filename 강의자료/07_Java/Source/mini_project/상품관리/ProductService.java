@@ -1,10 +1,12 @@
 package chap14.sec04;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -28,8 +30,11 @@ public class ProductService {
 				case "1": registerProduct(); break;
 				case "2": showProducts(); break;
 				case "3" : ipgoProduct(); break;
+				case "4" : saleProduct(); break;
+				case "5" : saleSummay(); break;
 				case "0": return;
 			}
+			System.out.println();
 		}
 	}
 	public void registerProduct() {
@@ -49,6 +54,7 @@ public class ProductService {
 			product.setStock(Integer.parseInt(scanner.nextLine()));
 			
 			lists.add(product);
+			writeConf();
 			
 		} catch(Exception e) {
 			System.out.println("등록 에러: " + e.getMessage());
@@ -66,7 +72,7 @@ public class ProductService {
 	public void ipgoProduct() {
 		try {
 			System.out.print("상품코드를 입력하시오 :");
-			Product  product = findProductIndex( scanner.nextLine());
+			Product  product = findProduct( scanner.nextLine());
 			if ( product == null ) {
 				System.out.println("상품이 없습니다..");
 				return;
@@ -74,23 +80,64 @@ public class ProductService {
 			System.out.print("수량을 입력하시오 :");
 			int nProductCount = convertToInt(scanner.nextLine());
 			product.setStock(product.getStock() + nProductCount);
+			writeConf();
+		}catch (Exception e) {
+			
+		}
+	}
+	public void saleProduct() {
+		try {
+			System.out.print("상품코드를 입력하시오 :");
+			Product  product = findProduct( scanner.nextLine());
+			if ( product == null ) {
+				System.out.println("상품이 없습니다..");
+				return;
+			}
+			System.out.print("수량을 입력하시오 :");
+			int nProductCount = convertToInt(scanner.nextLine());
+			if ( nProductCount < 0 || nProductCount  > product.getStock()) {
+				System.out.println ( "재고가 부족합니다.");
+			}else {
+				product.setSale(nProductCount);
+				product.setStock(product.getStock() - nProductCount);
+				writeConf();
+			}
 			
 		}catch (Exception e) {
 			
 		}
 	}
-	public Product findProductIndex(int nPno) {
-		int nCount  = 0;
+	
+	public void saleSummay() {
+		int sum = 0;
+		for(Product p: lists) {
+			if ( p.getSale() > 0 ) {
+				int subSum;
+				subSum = p.getPrice() * p.getSale();
+				sum += subSum;
+				String str = MessageFormat.format("{0} : {1} ->  {2}원"
+						, p.getName()
+						, p.getSale()
+						, subSum);
+				System.out.println(str);
+			}
+			
+		}
+		System.out.println("전체 판매 : " + MessageFormat.format("{0}",sum));
+	}
+	
+	public Product findProduct(int nPno) {
+		
 		for(Product p : lists) {
 			if ( nPno == p.getPno())
 				return p;
-			nCount++;
+
 		}
 		return null;
 				
 	}
-	public Product findProductIndex(String strPno) {
-		return 	findProductIndex(convertToInt(strPno));			
+	public Product findProduct(String strPno) {
+		return 	findProduct(convertToInt(strPno));			
 	}
 	public void readConf()  {
 		try {
@@ -113,6 +160,20 @@ public class ProductService {
 			fis.close();
 		}catch( Exception e) {
 			System.out.println("읽기 오류 : "+ e);
+		}
+	}
+	public void writeConf()  {
+		try {
+			FileWriter fws = new FileWriter(confFileName);
+			BufferedWriter writer  = new BufferedWriter(fws);
+			for( Product p : lists) {
+				String str = p.productString();
+				writer.write(str + "\n");
+			}
+			
+			writer.close();
+		}catch( Exception e) {
+			System.out.println("쓰기 오류 : "+ e);
 		}
 	}
 	public int convertToInt( String str) {

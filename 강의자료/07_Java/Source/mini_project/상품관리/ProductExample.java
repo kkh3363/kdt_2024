@@ -6,6 +6,7 @@ public class ProductExample {
 		// TODO Auto-generated method stub
 		ProductService productService = new ProductService();
 		productService.showMenu();
+		System.out.println("종료....");
 	}
 
 }
