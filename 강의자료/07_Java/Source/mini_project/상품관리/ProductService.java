@@ -98,7 +98,7 @@ public class ProductService {
 			if ( nProductCount < 0 || nProductCount  > product.getStock()) {
 				System.out.println ( "재고가 부족합니다.");
 			}else {
-				product.setSale(nProductCount);
+				product.setSale(product.getSale() + nProductCount);
 				product.setStock(product.getStock() - nProductCount);
 				writeConf();
 			}
