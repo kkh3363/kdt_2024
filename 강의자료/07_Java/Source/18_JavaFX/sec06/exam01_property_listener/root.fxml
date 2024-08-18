@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+				fx:controller="sec06.exam01_property_listener.RootController"
+				prefHeight="250.0" prefWidth="350.0" >
+   <center>
+      <Label fx:id="label" text="JavaFX" >
+         <font>
+            <Font size="0" />
+         </font>
+      </Label>
+   </center>
+   <bottom>
+      <Slider fx:id="slider" />
+   </bottom>   
+</BorderPane>
