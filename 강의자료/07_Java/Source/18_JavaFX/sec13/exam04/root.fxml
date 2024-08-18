@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="sec13.exam04.RootController">
+	<center>
+		<TableView fx:id="tableView" prefHeight="200" prefWidth="420" >
+			<columns>
+				<TableColumn prefWidth="100" resizable="false" text="이름" />
+				<TableColumn prefWidth="100" resizable="false" text="국어" />
+				<TableColumn prefWidth="100" resizable="false" text="수학" />
+				<TableColumn prefWidth="100" resizable="false" text="영어" />
+			</columns>
+		</TableView>
+	</center>
+	<bottom>
+		<HBox prefHeight="50" alignment="CENTER" spacing="20">
+			<children>
+				<Button fx:id="btnAdd" text="추가" />
+				<Button fx:id="btnBarChart" text="학생별 막대그래프" />
+			</children>
+		</HBox>
+	</bottom>
+</BorderPane>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" prefHeight="129.0" prefWidth="233.0"  
+	fx:controller="sec11.exam02_runlater.RootController">
+	<children>
+		<ProgressBar fx:id="progressBar" layoutX="17.0" layoutY="23.0" 
+		prefWidth="200.0" progress="0.0" />
+		<Label layoutX="18.0" layoutY="57.0" text="진행정도:" />	
+		<Label fx:id="lblWorkDone" layoutX="77.0" layoutY="57.0" />
+		<Label layoutX="118.0" layoutY="57.0" text="작업결과:" />
+		<Label fx:id="lblResult" layoutX="175.0" layoutY="57.0" />
+		<Button fx:id="btnStart" layoutX="66.0" layoutY="91.0" text="시작" />
+		<Button fx:id="btnStop" layoutX="130.0" layoutY="91.0" text="멈춤" />
+	</children>
+</AnchorPane>

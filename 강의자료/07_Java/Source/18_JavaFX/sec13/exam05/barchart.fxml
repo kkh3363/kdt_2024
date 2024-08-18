@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" prefHeight="250" prefWidth="400" >
+   <center>
+      <BarChart id="barChart" BorderPane.alignment="CENTER" >
+        <xAxis>
+          <CategoryAxis side="BOTTOM"/>
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0">
+         <children>
+            <Button id="btnClose" text="닫기" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
