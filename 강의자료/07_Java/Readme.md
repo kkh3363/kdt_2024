@@ -7,3 +7,7 @@
 
 ----------------
 - [자바 버전별 특징](https://www.freeblog-web.info/post/74?blogId=1)
+----------------------
+### Java FX
+- [Java FX](https://openjfx.io/)
+- [Scene Builder](https://gluonhq.com/products/scene-builder/)
