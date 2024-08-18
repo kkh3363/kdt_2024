@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" 
+	fx:controller="sec08.exam01_menubar_toolbar.RootController"
+	prefHeight="200.0" prefWidth="400.0" >
+	<top>
+		<VBox>
+			<children>
+				<MenuBar>
+					<menus>
+						<Menu text="파일">
+							<items>
+								<MenuItem text="새로만들기" onAction="#handleNew" >
+									<accelerator>
+										<KeyCodeCombination alt="DOWN" code="N" 
+											control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+									</accelerator>
+									<graphic>
+										<ImageView>
+											<image><Image url="@icons/new.png" /></image>
+										</ImageView>
+									</graphic>
+								</MenuItem>
+								<MenuItem text="열기"  onAction="#handleOpen" >
+									<accelerator>
+										<KeyCodeCombination alt="UP" code="O" control="DOWN" 
+											meta="UP" shift="UP" shortcut="UP" />
+									</accelerator>
+									<graphic>
+										<ImageView>
+											<image><Image url="@icons/open.png" /></image>
+										</ImageView>
+									</graphic>
+								</MenuItem>
+								<MenuItem text="저장" onAction="#handleSave" >
+									<accelerator>
+										<KeyCodeCombination alt="UP" code="S" control="DOWN" 
+											meta="UP" shift="UP" shortcut="UP" />
+									</accelerator>
+									<graphic>
+										<ImageView>
+											<image> <Image url="@icons/save.png" /></image> 
+										</ImageView>
+									</graphic>                     
+								</MenuItem>
+								<SeparatorMenuItem />
+								<MenuItem text="끝내기" onAction="#handleExit"/>
+							</items>
+						</Menu>
+					</menus>
+				</MenuBar>
+      		
+				<ToolBar>
+					<items>
+						<Button onAction="#handleNew">
+							<graphic>
+								<ImageView>
+									<image><Image url="@icons/new.png" /></image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<Button onAction="#handleOpen">
+							<graphic>
+								<ImageView>
+									<image><Image url="@icons/open.png" /></image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<Button onAction="#handleSave">
+							<graphic>
+								<ImageView>
+									<image><Image url="@icons/save.png" /></image>
+								</ImageView>
+							</graphic>
+						</Button>
+						<ComboBox prefWidth="100" promptText="선택" >
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="공개"/>
+									<String fx:value="비공개"/>
+								</FXCollections>
+							</items>
+						</ComboBox>						
+					</items>
+				</ToolBar>
+			</children>
+		</VBox>
+	</top>
+	
+	<center>
+		<TextArea fx:id="textArea"/>
+	</center>
+</BorderPane>
+

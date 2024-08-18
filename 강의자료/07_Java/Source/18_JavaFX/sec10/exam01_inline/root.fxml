@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml"
+	prefHeight="50" prefWidth="400" alignment="CENTER" spacing="20">
+   <children>
+		<Label text="검정바탕,노란글씨"
+			style="-fx-background-color: black; -fx-text-fill: yellow; -fx-padding: 5;"/>
+		<Label text="파란바탕,흰글씨"
+			style="-fx-background-color: blue; -fx-text-fill: white; -fx-padding: 5;"/>
+		<Label text="파란바탕,흰글씨"
+			style="-fx-background-color: blue; -fx-text-fill: white; -fx-padding: 5;"/>
+   </children>
+</HBox>
