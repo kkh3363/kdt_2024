@@ -12,3 +12,11 @@ create table users (
 	useremail		varchar(50)	  	not null
 );
 
+insert into users (userid, username, userpassword, userage,useremail)
+values ('spring', '이봄', '1234', 18, 'spring@mycompany.com');
+insert into users (userid, username, userpassword, userage, useremail)
+values ('summer', '유여름', '12345', 29, 'summer@mycompany.com');
+insert into users (userid, username, userpassword,  userage,useremail)
+values ('fall', '최가을', '1234', 24, 'fall@mycompany.com');
+insert into users (userid, username, userpassword,  userage,useremail)
+values ('winter', '한겨울', '12345', 25, 'winter@mycompany.com');
