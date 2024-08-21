@@ -9,9 +9,13 @@ import java.net.Socket;
 public class EchoServer2 extends Thread{
 	protected static boolean cont = true;
     protected Socket connection = null;
+	protected static int nCount=0;
+    protected int nCurrentNo=0;
     
     private EchoServer2(Socket clientSocket) {
         connection = clientSocket;
+	nCount++;
+        nCurrentNo = nCount;
         start();
     }
     public void run() {
@@ -38,7 +42,7 @@ public class EchoServer2 extends Thread{
        
         System.out.println("서버 소켓 생성");
         while (cont) {
-        	System.out.println("연결 대기 중.....");
+        	System.out.println("["+ nCurrentNo + "] 연결 대기 중.....");
             new EchoServer2(server.accept());
         }
        
