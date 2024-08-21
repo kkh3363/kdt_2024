@@ -12,7 +12,7 @@ public class UdpServer extends Thread {
 		
 		//UDP 서버 시작
 		startServer();
-
+		stopServer();
 	}
 	public static void startServer() {
 		Thread thread = new Thread() {
@@ -43,5 +43,9 @@ public class UdpServer extends Thread {
 		//스레드 시작
 		thread.start();
 	}
-	
+	public static void stopServer() {
+		//DatagramSocket을 닫고 Port 언바인딩
+		datagramSocket.close();
+		System.out.println( "[서버] 종료됨 ");
+	}
 }
