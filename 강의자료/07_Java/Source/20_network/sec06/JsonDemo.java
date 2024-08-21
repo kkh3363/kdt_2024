@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
 
 public class JsonDemo {
 
@@ -24,9 +26,9 @@ public class JsonDemo {
 		root.put("tel", tel);
 		//배열 속성 추가
 		JSONArray skill = new JSONArray();
-		skill.add("java");
-		skill.add("c");
-		skill.add("c++");
+		skill.put("java");
+		skill.put("c");
+		skill.put("c++");
 		root.put("skill", skill);
 		
 		//JSON 얻기
