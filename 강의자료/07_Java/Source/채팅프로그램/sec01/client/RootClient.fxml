@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="minichatting.client.RootControllerClient">
+   <padding>
+      <Insets bottom="5.0" top="5.0" />
+   </padding>
+   <center>
+      <TextArea id="textArea" fx:id="textArea" prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      	<padding>
+      		<Insets bottom="5.0" top="5.0" />
+   		</padding>
+         <children>
+            <TextField prefWidth="100.0" promptText="닉네임" />
+            <TextField fx:id="txtMessage" id="txtMessage" prefHeight="22.0" prefWidth="247.0" />
+            <Button id="btnSend" fx:id="btnSend"  text="전송" onAction="#sendData"/>
+            
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu text="서버 접속">
+            <items>
+              <MenuItem onAction="#connectServer" text="접속" />
+              <MenuItem onAction="#closeServer" text="해제" />
+            </items>
+          </Menu>
+          
+          <Menu text="Help">
+            <items>
+              <MenuItem text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
