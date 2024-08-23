@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane prefHeight="400.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="minichatting.server.RootController">
+   <padding>
+      <Insets bottom="5.0" top="5.0" />
+   </padding>
+   <center>
+      <TextArea fx:id="textArea" id="textArea" prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <ToggleButton fx:id="runBtn" id="runBtn" text="시작하기" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

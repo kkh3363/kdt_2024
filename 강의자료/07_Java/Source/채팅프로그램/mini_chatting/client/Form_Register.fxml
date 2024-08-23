@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="212.0" prefWidth="264.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="minichatting.client.RegisterControl">
+	<children>
+		<Label alignment="CENTER_RIGHT" layoutX="22.0" layoutY="36.0" prefWidth="60.0" text="아이디 :" />
+	    <TextField fx:id="txtUserId" layoutX="86.0" layoutY="32.0" prefHeight="23.0" prefWidth="100.0" />
+	    <Label alignment="CENTER_RIGHT" layoutX="22.0" layoutY="69.0" prefWidth="60.0" text="비밀번호 :" />
+	    <PasswordField fx:id="txtPassword" layoutX="86.0" layoutY="65.0" prefHeight="23.0" prefWidth="100.0" />
+	    <Label alignment="CENTER_RIGHT" layoutX="22.0" layoutY="105.0" prefWidth="60.0" text="이름 :" />
+	    <TextField fx:id="txtUserName" layoutX="86.0" layoutY="100.0" prefHeight="23.0" prefWidth="100.0" />
+		<Label alignment="CENTER_RIGHT" layoutX="22.0" layoutY="137.0" prefWidth="60.0" text="닉네임 :" />
+		<TextField fx:id="txtNickName" layoutX="86.0" layoutY="135.0" prefWidth="100.0" />
+		<Button layoutX="40.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnCancel" prefWidth="80.0" text="취 소" />
+		<Button layoutX="165.0" layoutY="175.0" mnemonicParsing="false" onAction="#btnRegisterSubmit" prefWidth="80.0" text="회원 가입" />
+	      
+	</children>
+</AnchorPane>
