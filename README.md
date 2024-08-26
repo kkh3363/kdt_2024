@@ -4,7 +4,4 @@
 - [2024년 K-digital 헤커톤](http://k-digitalhackathon.kr/)
 - [2023년 5회 해커톤 수상](https://www.moel.go.kr/common/downloadFile.do?file_seq=20231102656&bbs_seq=15873&bbs_id=12)
 
-  ### md 문서 제작
-  - 1
-  - 2
-  - 3
+  
