@@ -1,4 +1,5 @@
 <pre>
+    <code>
 metadata-complete="true"
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0"
@@ -13,4 +14,6 @@ metadata-complete="true" >
     <servlet-name>testServlet</servlet-name>
     <url-pattern>/testServlet</url-pattern>
   </servlet-mapping>
+
+</code> 
 </pre>
