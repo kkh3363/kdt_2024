@@ -6,11 +6,11 @@ metadata-complete="true"
 metadata-complete="true" >
 
 
-<servlet>
-    <servlet-name>testServlet</servlet-name>
+ <servlet>
+    < servlet-name>testServlet</servlet-name>
     <servlet-class>testServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+  < servlet-mapping>
     <servlet-name>testServlet</servlet-name>
     <url-pattern>/testServlet</url-pattern>
   </servlet-mapping>
