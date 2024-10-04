@@ -1,4 +1,4 @@
-- 워크벤치 root 로 접속
+- 워크벤치 root 로 접속    
          - jspdb  생성
 ```  
          create user 'jspuser'@'%' identified by '12345678';
