@@ -12,3 +12,5 @@ CREATE TABLE `tblRegister` (
 	`address` VARCHAR(60) NULL DEFAULT NULL,
 	`job` VARCHAR(30) NULL DEFAULT NULL
 );
+
+insert into tblRegister value( 'abcd', '1234', '홍길동','1234','5678','hone@gmail.com', '010-3333-4444','32112','부대동','학생');
