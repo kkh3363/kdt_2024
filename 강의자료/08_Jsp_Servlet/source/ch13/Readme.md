@@ -1,1 +1,1 @@
-- (cos.jar)[https://resources.oreilly.com/examples/9781565923911/-/tree/6018647acabfb5e90addcb43cfa833b31aa011ba/lib]
+- [cos.jar](https://resources.oreilly.com/examples/9781565923911/-/tree/6018647acabfb5e90addcb43cfa833b31aa011ba/lib)
