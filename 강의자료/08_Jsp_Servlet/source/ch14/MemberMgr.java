@@ -1,4 +1,4 @@
-package ch14;
+package myPortal.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.util.Vector;
 
 public class MemberMgr {
-
 	private DBConnectionMgr pool;
-
 	public MemberMgr() {
 		try {
 			pool = DBConnectionMgr.getInstance();
@@ -17,7 +15,7 @@ public class MemberMgr {
 		}
 	}
 
-	// ID Áßº¹È®ÀÎ
+	// ID ì¤‘ë³µí™•ì¸
 	public boolean checkId(String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -38,7 +36,7 @@ public class MemberMgr {
 		return flag;
 	}
 
-	// ¿ìÆí¹øÈ£ °Ë»ö
+	// ìš°í¸ë²ˆí˜¸ ê²€ìƒ‰
 	public Vector<ZipcodeBean> zipcodeRead(String area3) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -66,8 +64,8 @@ public class MemberMgr {
 		}
 		return vlist;
 	}
-
-	// È¸¿ø°¡ÀÔ
+	
+	// íšŒì›ê°€ì…
 	public boolean insertMember(MemberBean bean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -88,7 +86,7 @@ public class MemberMgr {
 			pstmt.setString(8, bean.getAddress());
 			String hobby[] = bean.getHobby();
 			char hb[] = { '0', '0', '0', '0', '0' };
-			String lists[] = { "ÀÎÅÍ³İ", "¿©Çà", "°ÔÀÓ", "¿µÈ­", "¿îµ¿" };
+			String lists[] = { "ì¸í„°ë„·", "ì—¬í–‰", "ê²Œì„", "ì˜í™”", "ìš´ë™" };
 			for (int i = 0; i < hobby.length; i++) {
 				for (int j = 0; j < lists.length; j++) {
 					if (hobby[i].equals(lists[j]))
@@ -106,8 +104,8 @@ public class MemberMgr {
 		}
 		return flag;
 	}
-
-	// ·Î±×ÀÎ
+	
+	// ë¡œê·¸ì¸
 	public boolean loginMember(String id, String pwd) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -129,87 +127,39 @@ public class MemberMgr {
 		}
 		return flag;
 	}
-	
-	/*************
-	 * ch17 ÇÊ¿äÇÑ ¸Ş¼Òµå
-	 * ************/
-
-	// È¸¿øÁ¤º¸°¡Á®¿À±â
+	// ë©¤ë²„ ì •ë³´ ê°€ì ¸ì˜¤ê¸°...
 	public MemberBean getMember(String id) {
+		MemberBean member = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		MemberBean bean = null;
+		String sql = null;
+		
 		try {
 			con = pool.getConnection();
-			String sql = "select * from tblMember where id = ?";
+			sql = "select * from tblMember where id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				bean = new MemberBean();
-				bean.setId(rs.getString("id"));
-				bean.setPwd(rs.getString("pwd"));
-				bean.setName(rs.getString("name"));
-				bean.setGender(rs.getString("gender"));
-				bean.setBirthday(rs.getString("birthday"));
-				bean.setEmail(rs.getString("email"));
-				bean.setZipcode(rs.getString("zipcode"));
-				bean.setAddress(rs.getString("address"));
-				String hobbys[] = new String[5];
-				String hobby = rs.getString("hobby");// 01001
-				for (int i = 0; i < hobbys.length; i++) {
-					hobbys[i] = hobby.substring(i, i + 1);
-				}
-				bean.setHobby(hobbys);
-				bean.setJob(rs.getString("job"));
+			while (rs.next()) {
+				member = new MemberBean();
+				member.setId(id);
+				member.setName(rs.getString(3));
+				member.setGender(rs.getString(4));
+				member.setBirthday(rs.getString(5));
+				member.setEmail(rs.getString(6));
+				member.setZipcode(rs.getString(7));
+				member.setAddress(rs.getString(8));
+				//member.setHobby(rs.getStrings(9));
+				member.setJob(rs.getString(10));
+				
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			pool.freeConnection(con);
+			pool.freeConnection(con, pstmt, rs);
 		}
-		return bean;
-	}
-
-	// È¸¿øÁ¤º¸¼öÁ¤
-	public boolean updateMember(MemberBean bean) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		boolean flag = false;
-		try {
-			con = pool.getConnection();
-			String sql = "update tblMember set pwd=?, name=?, gender=?, birthday=?,"
-					+ "email=?, zipcode=?, address=?, hobby=?, job=? where id = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bean.getPwd());
-			pstmt.setString(2, bean.getName());
-			pstmt.setString(3, bean.getGender());
-			pstmt.setString(4, bean.getBirthday());
-			pstmt.setString(5, bean.getEmail());
-			pstmt.setString(6, bean.getZipcode());
-			pstmt.setString(7, bean.getAddress());
-			char hobby[] = { '0', '0', '0', '0', '0' };
-			if (bean.getHobby() != null) {
-				String hobbys[] = bean.getHobby();
-				String list[] = { "ÀÎÅÍ³İ", "¿©Çà", "°ÔÀÓ", "¿µÈ­", "¿îµ¿" };
-				for (int i = 0; i < hobbys.length; i++) {
-					for (int j = 0; j < list.length; j++)
-						if (hobbys[i].equals(list[j]))
-							hobby[j] = '1';
-				}
-			}
-			pstmt.setString(8, new String(hobby));
-			pstmt.setString(9, bean.getJob());
-			pstmt.setString(10, bean.getId());
-			int count = pstmt.executeUpdate();
-			if (count > 0)
-				flag = true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt);
-		}
-		return flag;
+		return member;
 	}
 }
