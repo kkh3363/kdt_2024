@@ -16,7 +16,7 @@ CREATE TABLE `tblMember` (
 );
 ```
 - 우편번호
-  ```
+```
   DROP TABLE IF EXISTS tblZipcode;
 
 CREATE TABLE `tblZipcode` (
@@ -25,4 +25,5 @@ CREATE TABLE `tblZipcode` (
   `area2` char(20) DEFAULT NULL,
   `area3` char(30) DEFAULT NULL
 );
+
 ```
