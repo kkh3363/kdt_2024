@@ -13,3 +13,14 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
+
+a {    text-decoration: none;    color: #333333; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {    padding: 15px;    text-align: left;    border-bottom: 1px solid #ddd; }
+th {    background-color: #f8f9fa;   font-weight: 600; }
