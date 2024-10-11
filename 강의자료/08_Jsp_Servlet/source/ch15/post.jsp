@@ -1,68 +1,64 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>JSP Board</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>ê²Œì‹œê¸€ ìž‘ì„±</title>
+<link href="<%=request.getContextPath()%>/css/bbsStyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+</script>
 </head>
-<body bgcolor="#FFFFCC">
-<div align="center">
-<br/><br/>
-<table width="600" cellpadding="3">
+<body>
+<div class=container>
+	<table >
+		<tr>
+			<td class=td_title>ê¸€ì“°ê¸°</td>
+		</tr>
+	</table>
+	<form name="postFrm" method="post" action="boardPost">
+	<table  >
 	<tr>
-		<td bgcolor="84F399" height="25" align="center">±Û¾²±â</td>
-	</tr>
-</table>
-<br/>
-<form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
-<table width="600" cellpadding="3" align="center">
-	<tr>
-		<td align=center>
-		<table align="center">
-			<tr>
-				<td width="10%">¼º ¸í</td>
-				<td width="90%">
-				<input name="name" size="10" maxlength="8"></td>
-			</tr>
-			<tr>
-				<td>Á¦ ¸ñ</td>
-				<td>
-				<input name="subject" size="50" maxlength="30"></td>
-			</tr>
-			<tr>
-				<td>³» ¿ë</td>
-				<td><textarea name="content" rows="10" cols="50"></textarea></td>
-			</tr>
-			<tr>
-				<td>ºñ¹Ð ¹øÈ£</td>
-				<td><input type="password" name="pass" size="15" maxlength="15"></td>
-			</tr>
-			<tr>
-			 <tr>
-     			<td>ÆÄÀÏÃ£±â</td> 
-     			<td><input type="file" name="filename" size="50" maxlength="50"></td>
-    		</tr>
- 			<tr>
- 				<td>³»¿ëÅ¸ÀÔ</td>
- 				<td> HTML<input type=radio name="contentType" value="HTTP" >&nbsp;&nbsp;&nbsp;
-  			 	TEXT<input type=radio name="contentType" value="TEXT" checked>
-  			 	</td>
- 			</tr>
-			<tr>
-				<td colspan="2"><hr/></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					 <input type="submit" value="µî·Ï">
-					 <input type="reset" value="´Ù½Ã¾²±â">
-					 <input type="button" value="¸®½ºÆ®" onClick="javascript:location.href='list.jsp'">
-				</td>
-			</tr>
+		<th width=100>ì„± ëª…</th>
+			<td ><input name="name" size="10" maxlength="8"></td>
+		</tr>
+		<tr>
+			<th>ì œ ëª©</th>
+			<td><input name="subject" size="50" maxlength="30"></td>
+		</tr>
+		<tr>
+			<th>ë‚´ ìš©</th>
+			<td><textarea name="content" rows="10" cols="50"></textarea></td>
+		</tr>
+		<tr>
+			<th>ë¹„ë°€ ë²ˆí˜¸</th>
+			<td><input type="password" name="pass" size="15" maxlength="15"></td>
+		</tr>
+		<tr>
+		 <tr>
+    			<th>íŒŒì¼ì°¾ê¸°</th> 
+    			<td><input type="file" name="filename" size="50" maxlength="50"></td>
+   		</tr>
+		<tr>
+			<th>ë‚´ìš©íƒ€ìž…</th>
+			<td> 
+			<input id=contentTypeHtml type=radio name="contentType" value="HTTP" >
+			<label for=contentTypeHtml >HTML</label>&nbsp;&nbsp;&nbsp;
+			 	<input id=contentTypeText type=radio name="contentType" value="TEXT" checked>
+			 	<label for=contentTypeText >TEXT</label>
+			 	</td>
+		</tr>
 		</table>
-		</td>
-	</tr>
-</table>
-<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
-</form>
+		<hr/>
+		<div class=div_submit>
+			 <input type="submit" value="ë“±ë¡">
+			 <input type="reset" value="ë‹¤ì‹œì“°ê¸°">
+			 <input type="button" value="ë¦¬ìŠ¤íŠ¸" onClick="javascript:location.href='list.jsp'">
+		</div>
+		<input type=hidden name="ip" value='<%=request.getRemoteAddr() %>'>
+	</form>
 </div>
+
+
 </body>
 </html>

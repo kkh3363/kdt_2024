@@ -1,19 +1,18 @@
-package ch15;
+package myPortal.bbs;
 
 public class BoardBean {
-	
 	private int num;
-	private String name;        
-	private String subject;      
-	private String content;     
-	private int pos;            
-	private int depth;        
-	private int ref;        
-	private String regdate;     
-	private String pass;          
-	private String  ip;
-	private int count;        
-	private String filename; 
+	private String name;
+	private String subject;
+	private String content;
+	private int pos;
+	private int depth;
+	private int ref;
+	private String regdate;
+	private String pass;
+	private String ip;
+	private int count;
+	private String filename;
 	private int filesize;
 	
 	public int getNum() {
@@ -93,5 +92,5 @@ public class BoardBean {
 	}
 	public void setFilesize(int filesize) {
 		this.filesize = filesize;
-	}  
+	}
 }

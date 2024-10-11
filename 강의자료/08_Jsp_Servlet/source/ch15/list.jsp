@@ -1,201 +1,205 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<%@page import="ch15.BoardBean"%>
-<%@page import="java.util.Vector"%>
-<jsp:useBean id="bMgr" class="ch15.BoardMgr" />
-<%	
-	  request.setCharacterEncoding("EUC-KR");
-	  
-      int totalRecord=0; //ÀüÃ¼·¹ÄÚµå¼ö
-	  int numPerPage=10; // ÆäÀÌÁö´ç ·¹ÄÚµå ¼ö 
-	  int pagePerBlock=15; //ºí·°´ç ÆäÀÌÁö¼ö 
-	  
-	  int totalPage=0; //ÀüÃ¼ ÆäÀÌÁö ¼ö
-	  int totalBlock=0;  //ÀüÃ¼ ºí·°¼ö 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="myPortal.bbs.BoardBean" %>
+<%@ page import="java.util.Vector" %>
+<jsp:useBean id="bMgr" class="myPortal.bbs.BoardManager" />
+<%
+	request.setCharacterEncoding("UTF-8");
 
-	  int nowPage=1; // ÇöÀçÆäÀÌÁö
-	  int nowBlock=1;  //ÇöÀçºí·°
-	  
-	  int start=0; //µğºñÀÇ select ½ÃÀÛ¹øÈ£
-	  int end=10; //½ÃÀÛ¹øÈ£·Î ºÎÅÍ °¡Á®¿Ã select °¹¼ö
-	  
-	  int listSize=0; //ÇöÀç ÀĞ¾î¿Â °Ô½Ã¹°ÀÇ ¼ö
 
-	String keyWord = "", keyField = "";
 	Vector<BoardBean> vlist = null;
+	String keyWord=""; // í‚¤ì›Œë“œ 
+	String keyField="";  // í‚¤í•„ë“œ ( ì´ë¦„, ì œëª©..)
+	int nowPage = 1; // í˜„ì¬ í˜ì´ì§€
+	int nowBlock=1;  //í˜„ì¬ë¸”ëŸ­
+	int totalBlock =0;
+	int numPerPage = 10 ; // í˜ì´ì§€ë‹¹ ë ˆì½”ë“œ ìˆ˜
+	int pagePerBlock=15; //ë¸”ëŸ­ë‹¹ í˜ì´ì§€ìˆ˜
+	int totalRecord = 0; // ì „ì²´ ë ˆì½”ë“œ ìˆ˜.
+	int start = 0;
+	int end= 10;
+	int totalPage;
+	
 	if (request.getParameter("keyWord") != null) {
 		keyWord = request.getParameter("keyWord");
 		keyField = request.getParameter("keyField");
-	}
+	} 
 	if (request.getParameter("reload") != null){
 		if(request.getParameter("reload").equals("true")) {
 			keyWord = "";
 			keyField = "";
 		}
 	}
-	
 	if (request.getParameter("nowPage") != null) {
 		nowPage = Integer.parseInt(request.getParameter("nowPage"));
 	}
-	 start = (nowPage * numPerPage)-numPerPage;
-	 end = numPerPage;
-	 
+	start = (nowPage * numPerPage) - numPerPage;
+	end = numPerPage;
+	
 	totalRecord = bMgr.getTotalCount(keyField, keyWord);
-	totalPage = (int)Math.ceil((double)totalRecord / numPerPage);  //ÀüÃ¼ÆäÀÌÁö¼ö
-	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock); //ÇöÀçºí·° °è»ê
-	  
-	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);  //ÀüÃ¼ºí·°°è»ê
-%>
+	// ì „ì²´ í˜ì´ì§€....
+	totalPage = (int)Math.ceil( (double)totalRecord / numPerPage) ;
+	//í˜„ì¬ë¸”ëŸ­ ê³„ì‚°
+	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock); 
+	//ì „ì²´ë¸”ëŸ­ê³„ì‚°
+	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);  
+	
+%>    
+<!DOCTYPE html>
 <html>
 <head>
-<title>JSP Board</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>ë³´ë“œ ëª©ë¡</title>
+<link href="<%=request.getContextPath()%>/css/bbsStyle.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	function list() {
-		document.listFrm.action = "list.jsp";
-		document.listFrm.submit();
-	}
-	
-	function pageing(page) {
-		document.readFrm.nowPage.value = page;
-		document.readFrm.submit();
-	}
-	
-	function block(value){
-		 document.readFrm.nowPage.value=<%=pagePerBlock%>*(value-1)+1;
-		 document.readFrm.submit();
-	} 
-	
 	function read(num){
 		document.readFrm.num.value=num;
 		document.readFrm.action="read.jsp";
 		document.readFrm.submit();
 	}
-	
-	function check() {
-	     if (document.searchFrm.keyWord.value == "") {
-	   alert("°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-	   document.searchFrm.keyWord.focus();
-	   return;
-	     }
-	  document.searchFrm.submit();
-	 }
+	function block(value){
+		 document.readFrm.nowPage.value=<%=pagePerBlock%>*(value-1)+1;
+		 document.readFrm.submit();
+	} 
+	function pageing(page) {
+		document.readFrm.nowPage.value = page;
+		document.readFrm.submit();
+	}
+	function list() {
+		document.listFrm.action = "list.jsp";
+		document.listFrm.submit();
+	}
+	function check(){
+		//alert(document.searchFrm.keyWord.value);
+		if (document.searchFrm.keyWord.value == "") {
+			alert("ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.")
+			documet.searchFrm.keyWord.focus();
+			return;
+		}
+		document.searchFrm.submit();
+	}
 </script>
 </head>
-<body bgcolor="#FFFFCC">
-<div align="center">
-	<br/>
-	<h2>JSPBoard</h2>
-	<br/>
-	<table align="center" width="600">
-			<tr>
-				<td>Total : <%=totalRecord%>Articles(<font color="red">
-				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>
-			</tr>
-	</table>
-	<table align="center" width="600" cellpadding="3">
+
+<body>
+	<div class="container">
+	<h1 class=page-title>Jsp Board</h1>
+	<br />
+	<table width=100% align="center">
 		<tr>
-			<td align="center" colspan="2">
-			<%
-				  vlist = bMgr.getBoardList(keyField, keyWord, start, end);
-				  listSize = vlist.size();//ºê¶ó¿ìÀú È­¸é¿¡ º¸¿©Áú °Ô½Ã¹°°¹¼ö
-				  if (vlist.isEmpty()) {
-					out.println("µî·ÏµÈ °Ô½Ã¹°ÀÌ ¾ø½À´Ï´Ù.");
-				  } else {
-			%>
-				  <table width="100%" cellpadding="2" cellspacing="0">
-					<tr align="center" bgcolor="#D0D0D0" height="120%">
-						<td>¹ø È£</td>
-						<td>Á¦ ¸ñ</td>
-						<td>ÀÌ ¸§</td>
-						<td>³¯ Â¥</td>
-						<td>Á¶È¸¼ö</td>
-					</tr>
-					<%
-						  for (int i = 0;i<numPerPage; i++) {
-							if (i == listSize) break;
-							BoardBean bean = vlist.get(i);
-							int num = bean.getNum();
-							String name = bean.getName();
-							String subject = bean.getSubject();
-							String regdate = bean.getRegdate();
-							int depth = bean.getDepth();
-							int count = bean.getCount();
-					%>
-					<tr>
-						<td align="center">
-							<%=totalRecord-((nowPage-1)*numPerPage)-i%>
-						</td>
-						<td>
+			<td> Total:  <%= totalRecord%> Articles( <%= nowPage%>/ <%=totalPage%>) pages</td>
+		</tr>
+	</table>
+<%
+	int listSize= 0 ;
+
+	vlist = bMgr.getBoardList(keyField, keyWord, start, end);
+	listSize = vlist.size();
+%>	
+	<table width=100% >
+		<tr>
+			<td align=center colspan=2>
+<!--  ë¦¬ìŠ¤íŠ¸ ì œëª© -->
+			<table width=100% cellpadding=2 cellspacing = 0>
+				<tr align=center bgcolor=#d0d0d0 height=120%>
+					<th width=100>ë²ˆí˜¸ </th>
+					<th  >ì œëª© </th>
+					<th width=100>ì‘ì„±ì </th>
+					<th width=100>ì‘ì„±ì¼ </th>
+					<th width=100>ì¡°íšŒìˆ˜ </th>
+				</tr>
+<!--  ë¦¬ìŠ¤íŠ¸ ë‚´ìš© -->
+<%		if ( vlist.isEmpty()) {  %>
+				<tr><td colspan=5 class="td_center"> ë“±ë¡ëœ ê²Œì‹œë¬¼ì´ ì—†ìŠµë‹ˆë‹¤....</td></tr>
+	<%	} else {  
+			for ( int i=0; i < numPerPage; i++ ){
+				if (i == listSize) 
+					break;
+				BoardBean bean = vlist.get(i);
+				int num = bean.getNum();
+				String name = bean.getName();
+				String subject = bean.getSubject();
+				String regdate = bean.getRegdate();
+				int depth = bean.getDepth();
+				int count = bean.getCount();
+	%>				
+				<tr>
+					<td class="td_center">
+						<%=totalRecord-((nowPage-1)*numPerPage)-i%>
+					</td>
+					<td>
 						<%
-							  if(depth>0){
-								for(int j=0;j<depth;j++){
-									out.println("&nbsp;&nbsp;");
-									}
+						  if(depth>0){
+							for(int j=0;j<depth;j++){
+								out.println("&nbsp;&nbsp;");
 								}
+							}
 						%>
-						  <a href="javascript:read('<%=num%>')"><%=subject%></a>
-						</td>
-						<td align="center"><%=name%></td>
-						<td align="center"><%=regdate%></td>
-						<td align="center"><%=count%></td>
-						</tr>
-					<%}//for%>
-				</table> <%
- 			}//if
- 		%>
+						<a href="javascript:read('<%=num%>')"><%=subject%></a>
+					</td>
+					<td class="td_center"><%=name%></td>
+					<td class="td_center"><%=regdate%></td>
+					<td class="td_center""><%=count%></td>
+				</tr>
+	
+	<%		} // for
+			%>				
+				
+		<% }  // end of if%>		
+			</table>
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><br /><br /></td>
+			<td colspan=2> <br><br></td>
 		</tr>
+		<!--  í˜ì´ì§€ -->
 		<tr>
-			<td>
-			<!-- ÆäÀÌÂ¡ ¹× ºí·° Ã³¸® Start--> 
-			<%
-   				  int pageStart = (nowBlock -1)*pagePerBlock + 1 ; //ÇÏ´Ü ÆäÀÌÁö ½ÃÀÛ¹øÈ£
-   				  int pageEnd = ((pageStart + pagePerBlock ) <= totalPage) ?  (pageStart + pagePerBlock): totalPage+1; 
-   				  //ÇÏ´Ü ÆäÀÌÁö ³¡¹øÈ£
-   				  if(totalPage !=0){
-    			  	if (nowBlock > 1) {%>
-    			  		<a href="javascript:block('<%=nowBlock-1%>')">prev...</a><%}%>&nbsp; 
-    			  		<%for ( ; pageStart < pageEnd; pageStart++){%>
-     			     	<a href="javascript:pageing('<%=pageStart %>')"> 
+			<td class="td_center" width=70%>
+<%
+				int pageStart = (nowBlock -1)*pagePerBlock + 1 ; //í•˜ë‹¨ í˜ì´ì§€ ì‹œì‘ë²ˆí˜¸
+				int pageEnd = ((pageStart + pagePerBlock ) <= totalPage) ?  (pageStart + pagePerBlock): totalPage+1; 
+				if(totalPage !=0){
+					if (nowBlock > 1) {%>
+						<a href="javascript:block('<%=nowBlock-1%>')">prev...</a>
+					<%} // if (nowBlock) %> &nbsp;
+					
+					<% for ( ; pageStart < pageEnd; pageStart++){%>
+						<a href="javascript:pageing('<%=pageStart %>')"> 
      					<%if(pageStart==nowPage) {%><font color="blue"> <%}%>
      					[<%=pageStart %>] 
      					<%if(pageStart==nowPage) {%></font> <%}%></a> 
-    					<%}//for%>&nbsp; 
-    					<%if (totalBlock > nowBlock ) {%>
-    					<a href="javascript:block('<%=nowBlock+1%>')">.....next</a>
-    				<%}%>&nbsp;  
-   				<%}%>
- 				<!-- ÆäÀÌÂ¡ ¹× ºí·° Ã³¸® End-->
-				</td>
-				<td align="right">
-					<a href="post.jsp">[±Û¾²±â]</a> 
-					<a href="javascript:list()">[Ã³À½À¸·Î]</a>
-				</td>
-			</tr>
-		</table>
-	<hr width="600"/>
-	<form  name="searchFrm"  method="get" action="list.jsp">
-	<table width="600" cellpadding="4" cellspacing="0">
- 		<tr>
-  			<td align="center" valign="bottom">
-   				<select name="keyField" size="1" >
-    				<option value="name"> ÀÌ ¸§</option>
-    				<option value="subject"> Á¦ ¸ñ</option>
-    				<option value="content"> ³» ¿ë</option>
-   				</select>
-   				<input size="16" name="keyWord">
-   				<input type="button"  value="Ã£±â" onClick="javascript:check()">
-   				<input type="hidden" name="nowPage" value="1">
-  			</td>
- 		</tr>
+   					<%}//for%>&nbsp; 
+   					<%if (totalBlock > nowBlock ) {%>
+   					<a href="javascript:block('<%=nowBlock+1%>')">.....next</a>
+   					<%}%>&nbsp;  
+			<% } // if (totalPage) %>			
+			</td>
+			<td class="td_right">
+				<a href="post.jsp">[ê¸€ì“°ê¸°]</a> 
+				<a href="javascript:list()">[ì²˜ìŒìœ¼ë¡œ]</a>
+			</td>
+		</tr>
 	</table>
+<!--  ì°¾ê¸° í¼ -->	
+	<form name=searchFrm method="get" action="list.jsp" >
+	<table  width="100%" cellpadding="4" cellspacing="0">
+	<tr>
+		<td class="td_center"> 
+			<select name="keyField" size="1" >
+  				<option value="name"> ì´ ë¦„</option>
+  				<option value="subject"> ì œ ëª©</option>
+  				<option value="content"> ë‚´ ìš©</option>
+			</select>
+			<input type=tex size="16" name="keyWord">
+			<input type="button"  value="ì°¾ê¸°" onClick="javascript:check()">
+			<input type="hidden" name="nowPage" value=1>
+		</td>
+	</tr>
+	</table>	
 	</form>
 	<form name="listFrm" method="post">
-		<input type="hidden" name="reload" value="true"> 
-		<input type="hidden" name="nowPage" value="1">
+		<input type=hidden name="reload" value="true">
+		<input type=hidden name="nowPage" value="1">
 	</form>
 	<form name="readFrm" method="get">
 		<input type="hidden" name="num"> 
@@ -206,3 +210,6 @@
 </div>
 </body>
 </html>
+
+
+
