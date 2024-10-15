@@ -1,0 +1,16 @@
+ <servlet>
+    <description></description>
+    <display-name>FileUpload2</display-name>
+    <servlet-name>FileUpload2</servlet-name>
+    <servlet-class>myapp.FileUpload2</servlet-class>
+    <multipart-config>
+      <location>c:\\java\\temp</location>
+      <max-file-size>20971520</max-file-size>
+      <max-request-size>41943040</max-request-size>
+      <file-size-threshold>209711520</file-size-threshold>
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileUpload2</servlet-name>
+    <url-pattern>/fileupload2</url-pattern>
+  </servlet-mapping>
