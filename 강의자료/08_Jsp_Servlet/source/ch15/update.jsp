@@ -11,7 +11,9 @@
 </script>
 <% } %> 
 <%
-	int num = Integer.parseInt(request.getParameter("num"));
+	System.out.println(request.getParameter("num") );
+	//int num = Integer.parseInt(request.getParameter("num"));
+	int num= 8;
 	String nowPage = request.getParameter("nowPage");
 	BoardBean bean = (BoardBean)session.getAttribute("bean");
 	String subject = bean.getSubject();
