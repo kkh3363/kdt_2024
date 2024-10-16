@@ -14,7 +14,10 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		PrintWriter out = response.getWriter();
 		
 		String contentType = request.getContentType();
-		
+
+		String categ  = request.getParameter("categ");
+		System.out.printf("categ= %s  \n", categ);
+	
 		if (contentType != null && contentType.toLowerCase().startsWith("multipart/") ){
 			Collection<Part> parts  = request.getParts();
 			System.out.println("contentType = " +contentType);
