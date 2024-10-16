@@ -10,6 +10,7 @@
 <div style="text-align:center">
 <h2>파일 업로드</h2>
     <form action="fileupload2" method="post" enctype="multipart/form-data">
+		분류 : <input type=text name="categ"><br>
 		<input type="file" name="upload_file" />
 		<input type="submit" value="저장" />
 	</form>
