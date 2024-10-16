@@ -16,7 +16,7 @@
 			<td class=td_title>글쓰기</td>
 		</tr>
 	</table>
-	<form name="postFrm" method="post" action="boardPost">
+	<form name="postFrm" method="post" action="boardPost" enctype="multipart/form-data">
 	<table  >
 	<tr>
 		<th width=100>성 명</th>
