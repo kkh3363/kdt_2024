@@ -186,6 +186,54 @@ public class BoardManager {
 			pool.freeConnection(con, pstmt, rs);
 		}
 	} // insertBoard
+	
+	// 게시물 수정
+	public void updateBoard(BoardBean bean) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "update tblBoard set name=?,subject=?,content=? where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bean.getName());
+			pstmt.setString(2, bean.getSubject());
+			pstmt.setString(3, bean.getContent());
+			pstmt.setInt(4, bean.getNum());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
+	// 게시물 삭제
+	public void deleteBoard(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		ResultSet rs = null;
+		try {
+			con = pool.getConnection();
+			sql = "select filename from tblBoard where num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			/*
+			 * if (rs.next() && rs.getString(1) != null) { if (!rs.getString(1).equals(""))
+			 * { File file = new File(SAVEFOLDER + "/" + rs.getString(1)); if
+			 * (file.exists()) UtilMgr.delete(SAVEFOLDER + "/" + rs.getString(1)); } }
+			 */
+			sql = "delete from tblBoard where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+	}
 } // End of Class
 
 
