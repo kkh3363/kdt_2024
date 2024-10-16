@@ -1,71 +1,60 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
-<jsp:useBean id="bean" class="ch15.BoardBean" scope="session"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<jsp:useBean id="bean" class="myPortal.bbs.BoardBean" scope="session"/> 
 <%
 	  String nowPage = request.getParameter("nowPage");
 	  String subject = bean.getSubject();
 	  String content = bean.getContent(); 
 %>
+   
+<!DOCTYPE html>
 <html>
 <head>
-<title>JSPBoard</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>ÎãµÎ≥ÄÍ∏Ä ÏûëÏÑ±</title>
+<link href="<%=request.getContextPath()%>/css/bbsStyle.css" rel="stylesheet" type="text/css">
+
 </head>
-<body bgcolor="#FFFFCC">
-<div align="center">
-<br><br>
- <table width="600" cellpadding="3">
-  <tr>
-   <td bgcolor="#CCCC00" height="21" align="center">¥‰∫Ø«œ±‚</td>
-  </tr>
-</table>
-<form method="post" action="boardReply" >
-<table width="600" cellpadding="7">
- <tr>
-  <td>
-   <table>
-    <tr>
-     <td width="20%">º∫ ∏Ì</td>
-     <td width="80%">
-	  <input name="name" size="30" maxlength="20"></td>
-    </tr>
-    <tr>
-     <td>¡¶ ∏Ò</td>
-     <td>
-	  <input name="subject" size="50" value="¥‰∫Ø : <%=subject%>" maxlength="50"></td> 
-    </tr>
+<body>
+<div class=container>
+	<table >
+		<tr>
+			<td class=td_title>ÎãµÍ∏Ä ÏûëÏÑ±</td>
+		</tr>
+	</table>
+	
+	<form name="postFrm" method="post" action="boardReply">
+	<table  >
 	<tr>
-     <td>≥ª øÎ</td>
-     <td>
-	  <textarea name="content" rows="12" cols="50">
-      	<%=content %>
-      	========¥‰∫Ø ±€¿ª æ≤ººø‰.=======
-      	</textarea>
-      </td>
-    </tr>
-    <tr>
-     <td>∫Òπ– π¯»£</td> 
-     <td>
-	  <input type="password" name="pass" size="15" maxlength="15"></td> 
-    </tr>
-    <tr>
-     <td colspan="2" height="5"><hr/></td>
-    </tr>
-	<tr> 
-     <td colspan="2">
-	  <input type="submit" value="¥‰∫ØµÓ∑œ" >
-      <input type="reset" value="¥ŸΩ√æ≤±‚">
-      <input type="button" value="µ⁄∑Œ" onClick="history.back()"></td>
-    </tr> 
-   </table>
-  </td>
- </tr>
-</table>
- <input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>" >
- <input type="hidden" name="nowPage" value="<%=nowPage%>">
- <input type="hidden" name="ref" value="<%=bean.getRef()%>">
- <input type="hidden" name="pos" value="<%=bean.getPos()%>">
- <input type="hidden" name="depth" value="<%=bean.getDepth()%>">
-</form> 
+		<th width="100">ÏÑ± Î™Ö</th>
+		<td  ><input name="name" size="10" maxlength="8"></td>
+	</tr>
+	<tr>
+		<th>Ï†ú Î™©</th>
+		<td><input name="subject" size="50" maxlength="30" value="ÎãµÎ≥Ä : <%=subject%>"></td>
+	</tr>
+	<tr>
+		<th>ÎÇ¥ Ïö©</th>
+		<td><textarea name="content" rows="10" cols="50">
+		<%=content %>
+      	========ÎãµÎ≥Ä Í∏ÄÏùÑ Ïì∞ÏÑ∏Ïöî.=======
+		</textarea></td>
+	</tr>
+	<tr>
+		<th>ÎπÑÎ∞Ä Î≤àÌò∏</th>
+		<td><input type="password" name="pass" size="15" maxlength="15"></td>
+	</tr>
+	<tr>
+		<td  colspan=2 class="td_center">
+			 <input type="submit" value="ÎãµÎ≥ÄÎì±Î°ù">
+			 <input type="reset" value="Îã§ÏãúÏì∞Í∏∞">
+			 <input type="button" value="Îí§Î°ú" onClick="javascript:location.href='list.jsp'">
+		</td>
+	</tr>
+	</table>
+	</form>
 </div>
+
+
 </body>
 </html>
