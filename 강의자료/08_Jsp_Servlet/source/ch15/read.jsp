@@ -28,6 +28,8 @@
 	int filesize = bean.getFilesize();
 	String ip = bean.getIp();
 	int count = bean.getCount();
+	
+	session.setAttribute("bean", bean);//게시물을 세션에 저장
 %>    
 <!DOCTYPE html>
 <html>
@@ -85,9 +87,9 @@
 		<td class="td_center">
 		<hr/>
 		[ <a href="javascript:list()" >리스트</a> | 
-		<a href="update.jsp" >수 정</a> |
-		<a href="reply.jsp" >답 변</a> |
-		<a href="#">삭 제</a> ]
+		<a href="update.jsp?nowPage=<%=nowPage%>&num=<%=num%>" >수 정</a> |
+		<a href="reply.jsp?nowPage=<%=nowPage%>" >답 변</a> |
+		<a href="delete.jsp?nowPage=<%=nowPage%>&num=<%=num%>">삭 제</a> ]
 		</td>
 	</tr>
 </table>
@@ -101,6 +103,12 @@
 </form>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
