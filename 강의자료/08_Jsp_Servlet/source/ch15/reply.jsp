@@ -52,6 +52,11 @@
 		</td>
 	</tr>
 	</table>
+<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>" >
+ <input type="hidden" name="nowPage" value="<%=nowPage%>">
+ <input type="hidden" name="ref" value="<%=bean.getRef()%>">
+ <input type="hidden" name="pos" value="<%=bean.getPos()%>">
+ <input type="hidden" name="depth" value="<%=bean.getDepth()%>">
 	</form>
 </div>
 
