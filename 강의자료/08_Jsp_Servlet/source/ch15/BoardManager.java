@@ -176,6 +176,12 @@ public class BoardManager {
 			pstmt.setInt(4, ref);
 			pstmt.setString(5, req.getParameter("pass"));
 			pstmt.setString(6, req.getParameter("ip"));
+			
+			FileManager fMan = new FileManager();
+			fMan.fileUpload(req);
+			filename = fMan.fileName;
+			filesize = fMan.fileSize;
+			
 			pstmt.setString(7, filename);
 			pstmt.setInt(8, filesize);
 			pstmt.executeUpdate();
