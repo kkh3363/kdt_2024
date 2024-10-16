@@ -1,21 +1,33 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
- <%@ page import="ch15.BoardBean"%>
-<% 
-	  int num = Integer.parseInt(request.getParameter("num"));
-	  String nowPage = request.getParameter("nowPage");
-	  BoardBean bean = (BoardBean)session.getAttribute("bean");
-	  String subject = bean.getSubject();
-	  String name = bean.getName(); 
-	  String content = bean.getContent(); 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="myPortal.bbs.BoardBean" %>
+   
+<%
+	if (request.getParameter("num") == null || request.getParameter("num") == "" ) {
+%>    
+<script type="text/javascript">
+	alert("ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²Œì‹œë¬¼ ì…ë‹ˆë‹¤.");
+	location.href = "list.jsp";
+</script>
+<% } %> 
+<%
+	int num = Integer.parseInt(request.getParameter("num"));
+	String nowPage = request.getParameter("nowPage");
+	BoardBean bean = (BoardBean)session.getAttribute("bean");
+	String subject = bean.getSubject();
+	String name = bean.getName(); 
+	String content = bean.getContent();
 %>
+<!DOCTYPE html>
 <html>
 <head>
-<title>JSP Board</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<title>ê²Œì‹œê¸€ ìˆ˜ì •</title>
+<link href="<%=request.getContextPath()%>/css/bbsStyle.css" rel="stylesheet" type="text/css">
 <script>
 	function check() {
 	   if (document.updateFrm.pass.value == "") {
-		 alert("¼öÁ¤À» À§ÇØ ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		 alert("ìˆ˜ì •ì„ ìœ„í•´ íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		 document.updateFrm.pass.focus();
 		 return false;
 		 }
@@ -23,57 +35,46 @@
 	}
 </script>
 </head>
-<body bgcolor="#FFFFCC">
-<div align="center"><br/><br/>
-<table width="600" cellpadding="3">
-  <tr>
-   <td bgcolor="#FF9018"  height="21" align="center">¼öÁ¤ÇÏ±â</td>
-  </tr>
-</table>
-<form name="updateFrm" method="post" action="boardUpdate">
-<table width="600" cellpadding="7">
- <tr>
-  <td>
-   <table>
-    <tr>
-     <td width="20%">¼º ¸í</td>
-     <td width="80%">
-	  <input name="name" value="<%=name%>" size="30" maxlength="20">
-	 </td>
-	</tr>
+<body>
+<div class=container>
+	<table >
+		<tr>
+			<td class=td_title>ê¸€ ìˆ˜ì •</td>
+		</tr>
+	</table>
+	<form name="updateFrm" method="post" action="boardUpdate">
+	<table  >
 	<tr>
-     <td>Á¦ ¸ñ</td>
-     <td>
-	  <input name="subject" size="50" value="<%=subject%>" maxlength="50">
-	 </td>
-    <tr>
-     <td>³» ¿ë</td>
-     <td>
-	  <textarea name="content" rows="10" cols="50"><%=content%></textarea>
-	 </td>
-    </tr>
-	<tr>
-     <td>ºñ¹Ğ ¹øÈ£</td> 
-     <td><input type="password" name="pass" size="15" maxlength="15">
-      ¼öÁ¤ ½Ã¿¡´Â ºñ¹Ğ¹øÈ£°¡ ÇÊ¿äÇÕ´Ï´Ù.</td>
-    </tr>
-	<tr>
-     <td colspan="2" height="5"><hr/></td>
-    </tr>
-	<tr>
-     <td colspan="2">
-	  <input type="button" value="¼öÁ¤¿Ï·á" onClick="check()">
-      <input type="reset" value="´Ù½Ã¼öÁ¤"> 
-      <input type="button" value="µÚ·Î" onClick="history.go(-1)">
-	 </td>
-    </tr> 
-   </table>
-  </td>
- </tr>
-</table>
- <input type="hidden" name="nowPage" value="<%=nowPage %>">
- <input type='hidden' name="num" value="<%=num%>">
-</form> 
+		<th width=100>ì„± ëª…</th>
+			<td ><input name="name" size="10" maxlength="8" value="<%=name%>"></td>
+		</tr>
+		<tr>
+			<th>ì œ ëª©</th>
+			<td><input name="subject" size="50" maxlength="30" value="<%=subject%>"> </td>
+		</tr>
+		<tr>
+			<th>ë‚´ ìš©</th>
+			<td><textarea name="content" rows="10" cols="50"><%=content%></textarea></td>
+		</tr>
+		<tr>
+			<th>ë¹„ë°€ ë²ˆí˜¸</th>
+			<td><input type="password" name="pass" size="15" maxlength="15">
+			ìˆ˜ì • ì‹œì—ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ í•„ìš”í•©ë‹ˆë‹¤.
+			</td>
+		</tr>
+		
+		</table>
+		<hr/>
+		<div class=div_submit>
+			 <input type="submit" value="ìˆ˜ì • ì™„ë£Œ" onClick="check()">
+			 <input type="reset" value="ë‹¤ì‹œìˆ˜ì •">
+			 <input type="button" value="ë’¤ë¡œ" onClick="history.go(-1)">
+		</div>
+		<input type="hidden" name="nowPage" value="<%=nowPage %>">
+ 		<input type='hidden' name="num" value="<%=num%>">
+	</form>
 </div>
+
+
 </body>
 </html>
