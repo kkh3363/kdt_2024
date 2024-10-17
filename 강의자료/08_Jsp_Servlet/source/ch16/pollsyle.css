@@ -10,17 +10,16 @@ body { margin: 0; padding: 0;}
 h2 {
 	text-align:center;
 }
+a {    text-decoration: none;    color: #333333; }
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    
 }
 
-.table_list {
-	width: 800px;
+.table_list { width: 800px; margin-bottom: 20px;}
+.table_list td ,th {  padding: 10px; }
 	
-	border-collapse: collapse;
-}
 .table_list th {
 	border-top : 1px solid #333333;
 	border-bottom : 1px solid #333333;
