@@ -171,6 +171,7 @@ public class PollManager {
 			if (num == 0)
 				num = getMaxNum();
 			for (int i = 0; i < itemnum.length; i++) {
+				System.out.println(itemnum[i]);
 				if (itemnum[i] == null || itemnum[i].equals(""))
 					break;
 				pstmt.setInt(1, num);
@@ -185,6 +186,65 @@ public class PollManager {
 			pool.freeConnection(con, pstmt);
 		}
 		return flag;
+	}
+	
+	public Vector<PollItemBean> getView(int num) {
+		Vector<PollItemBean> vlist = new Vector<PollItemBean>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "select item,count from tblPollItem where listnum=?";
+			pstmt = con.prepareStatement(sql);
+			if (num == 0)
+				pstmt.setInt(1, getMaxNum());
+			else
+				pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				PollItemBean piBean= new PollItemBean();
+				String item[] = new String[1];
+				item[0] = rs.getString(1);
+				piBean.setItem(item);
+				piBean.setCount(rs.getInt(2));
+				vlist.add(piBean);
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
+	public int sumCount(int num) {
+		int count=0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+
+		try {
+			con = pool.getConnection();
+			sql = "select sum(count) from tblPollItem where listnum=?";
+			pstmt = con.prepareStatement(sql);
+			if (num == 0)
+				pstmt.setInt(1, getMaxNum());
+			else
+				pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				count = rs.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return count;
 	}
 }
 

@@ -44,3 +44,6 @@ table {
 	width: 800px; border-collapse: collapse;margin-bottom: 20px; border: 1px solid #555555;}
 .table_form td {  padding: 20px; }
 .table_form_question {background-color:#9CA2EE;  color: white;}
+
+.td_question { text-align:left ; border-top : 1px solid #333333;
+	border-bottom : 1px solid #333333; }
