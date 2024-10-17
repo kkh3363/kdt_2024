@@ -1,0 +1,73 @@
+@charset "UTF-8";
+* { margin:0; padding:0; box-sizing:border-box; }
+a { text-decoration: none; }
+
+
+#container { margin: 0  auto; width:1200px; }
+
+header { width:100%; height:130px; background-color:#07c; }
+
+#content {  width:100%;   height:auto;  }
+#main_left { float:left;width:240px;  }
+#main_content { float:left; }
+
+footer {width:100%; height:40px }
+
+.td_center { text-align: center;}
+.td_right { text-align: right;}
+
+#ul_nav { list-style:none; }
+#ul_nav > li { float: left;}
+#ul_nav > li > a { diplay :block; font-weight:600;
+	padding:20px 60px; color:white; }
+#ul_nav > li > a:hover { color:black; }	
+
+.logo_title h1 {
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 3em;
+    padding-bottom: 15px;
+    position: relative;
+    color: white;
+  }
+  .logo_title h1:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 55px;
+    background-color:  rgb(17, 159, 246);
+  }
+  .logo_title h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    height: 1px;
+    width: 95%;
+    max-width: 255px;
+    background-color: #333;
+  }
+ .table_login { width:100%; } 
+ .table_login   th{ background-color: #eee;  } 
+ .table_login   td{ padding : 5px 0px 5px 0px;  } 
+ 
+ .login_wrap input[type=button] {
+	background-color: #04AA6D; /* Green */
+	border: none;
+	color: white;
+	padding: 5px 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+ }
+ 
+ table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+ 

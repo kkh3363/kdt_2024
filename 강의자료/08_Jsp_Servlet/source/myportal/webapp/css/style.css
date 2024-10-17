@@ -1,0 +1,36 @@
+
+.table_title {
+	width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.member_container {margin: 0;
+    margin: 0 auto;
+    padding: 40px;
+    text-align:center;
+	width:950px;
+}
+.member_container h2 {
+	text-align:center;
+}
+.member_ins_form {  width: 100%;
+    border-collapse: collapse; 
+    border : 1px solid #333333;
+}
+
+.member_ins_form th {
+	text-align: center;
+	background-color: #dddd;
+	border-bottom: 1px solid #333333;
+}
+.member_ins_form td {
+	text-align: left;
+	padding : 5px 0 5px 20px;
+	border-bottom: 1px solid #333333;
+}
+
+
+
+
+
