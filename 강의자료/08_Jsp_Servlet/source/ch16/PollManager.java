@@ -158,4 +158,36 @@ public class PollManager {
 		}
 		return vlist;
 	}
+	// 투표 저장
+	public boolean updatePoll(int num, String[] itemnum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean flag = false;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "update tblPollItem set count = count+1 where listnum=? and itemnum = ?";
+			pstmt = con.prepareStatement(sql);
+			if (num == 0)
+				num = getMaxNum();
+			for (int i = 0; i < itemnum.length; i++) {
+				if (itemnum[i] == null || itemnum[i].equals(""))
+					break;
+				pstmt.setInt(1, num);
+				pstmt.setInt(2, Integer.parseInt(itemnum[i]));
+				int j = pstmt.executeUpdate();
+				if (j > 0)
+					flag = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+		return flag;
+	}
 }
+
+
+
+
