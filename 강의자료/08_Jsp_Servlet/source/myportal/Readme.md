@@ -25,4 +25,14 @@
     <servlet-name>PMemberLoginServlet</servlet-name>
     <url-pattern>/photo/pmemberLogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PMemberUpdateServlet</display-name>
+    <servlet-name>PMemberUpdateServlet</servlet-name>
+    <servlet-class>myPortal.photo.PMemberUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PMemberUpdateServlet</servlet-name>
+    <url-pattern>/photo/pmemberUpdate</url-pattern>
+  </servlet-mapping>
   ```
