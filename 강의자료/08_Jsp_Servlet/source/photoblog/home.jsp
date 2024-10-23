@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@page import="java.util.Vector,myPortal.pblog.*"%>
-<jsp:useBean id="pmgr" class="myPortal.pblog.BlogManager"/>
+<jsp:useBean id="pmgr" class="myPortal.pblog.PBlogManager"/>
 <jsp:useBean id="rmgr" class="myPortal.pblog.PReplyManager"/>
 <%
 		String id = (String)session.getAttribute("idKey");
