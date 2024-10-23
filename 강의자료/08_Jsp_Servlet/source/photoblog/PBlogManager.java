@@ -93,4 +93,34 @@ public class PBlogManager {
 		}
 		return vlist;
 	}
+	// PBlog List
+	public Vector<PBlogBean> listPBlog(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<PBlogBean> vlist = new Vector<PBlogBean>();
+		try {
+			con = pool.getConnection();
+			sql = "select * from tblPBlog where id=? order by num desc";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				PBlogBean bean = new PBlogBean();
+				bean.setNum(rs.getInt(1));
+				bean.setMessage(rs.getString(2));
+				bean.setId(rs.getString(3));
+				bean.setPdate(rs.getString(4));
+				bean.setPhoto(rs.getString(5));
+				bean.setHcnt(rs.getInt(6));
+				vlist.addElement(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
 }
