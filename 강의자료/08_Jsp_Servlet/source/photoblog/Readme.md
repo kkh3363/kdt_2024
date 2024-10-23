@@ -7,3 +7,5 @@
 7. PBlogManager.java - listPBlog()추가
 8. PReplyBean.java
 9. PReplyManager.java - listPReply()
+10. logout.jsp
+11. post.jsp
