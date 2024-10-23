@@ -1,14 +1,20 @@
 package myPortal.pblog;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import jakarta.servlet.http.HttpServletRequest;
+import myPortal.bbs.FileManager;
+import myPortal.bbs.UtilMgr;
 import myPortal.db.DBConnectionMgr;
 
 public class PBlogManager {
 	private DBConnectionMgr pool;
+	
+	private static final String  SAVEFOLDER = "D:\\kdt2024\\WorkSpace\\JspWork\\myPortal\\src\\main\\webapp\\photo_files";
 	
 	public PBlogManager() {
 		try {
@@ -122,5 +128,96 @@ public class PBlogManager {
 			pool.freeConnection(con, pstmt, rs);
 		}
 		return vlist;
+	}
+	// PBlog Insert
+	public void insertPBlog(HttpServletRequest req) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			String photo = null;
+			
+			FileManager fMan = new FileManager();
+			fMan.fileUpload(req, SAVEFOLDER);
+			photo = fMan.fileName;
+			
+			sql = "insert tblPBlog(message,id,pdate,photo)values(?,?,now(),?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, req.getParameter("message"));
+			pstmt.setString(2, req.getParameter("id"));
+			pstmt.setString(3, photo);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
+	// PBlog Delete
+	public void deletePBlog(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			String photo = getPhoto(num);
+			if (photo!=null) {
+				File file = new File(SAVEFOLDER + "/" + photo);
+				if (file.exists())
+					UtilMgr.delete(SAVEFOLDER + "/" + photo);
+			}
+			con =pool.getConnection();
+			sql = "delete from tblPBlog where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			if(pstmt.executeUpdate()>0) {
+				PReplyManager pMgr = new PReplyManager();
+				pMgr.deleteAllPReply(num);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
+	//PBlog Get Photo
+	public String getPhoto(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String photo = null;
+		try {
+			con = pool.getConnection();
+			sql = "select photo from tblPBlog where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				photo = rs.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return photo;
+	}
+	// HCnt Up
+	public void upHCnt(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		try {
+			con = pool.getConnection();
+			sql = "update tblPBlog set hCnt=hCnt+1 where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
 	}
 }
