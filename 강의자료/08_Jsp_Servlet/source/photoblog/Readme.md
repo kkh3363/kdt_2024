@@ -5,3 +5,5 @@
 5. PBlogManager.java - getPMember() 추가
 6. PBlogBean.java
 7. PBlogManager.java - listPBlog()추가
+8. PReplyBean.java
+9. PReplyManager.java - listPReply()
