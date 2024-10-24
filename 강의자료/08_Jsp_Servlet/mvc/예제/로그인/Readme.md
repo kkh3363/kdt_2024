@@ -4,7 +4,8 @@
 2. error.jsp
 3. loginForm.jsp
 4. success.jsp
-5. Customer.java
-6. CustomerService.java
-7. HomeController.java
-8. DoLoginController.java
+5. help.jsp
+6. Customer.java
+7. CustomerService.java
+8. HomeController.java
+9. DoLoginController.java
