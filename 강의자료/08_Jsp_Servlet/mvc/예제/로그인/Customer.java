@@ -1,7 +1,6 @@
-package myapp.model;
+package mymvc.models;
 
 public class Customer {
-
 	private String id;
 	private String name;
 	private String email;
@@ -47,5 +46,4 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 }
