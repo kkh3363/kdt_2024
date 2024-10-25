@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
     
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
 <table border="1">
 <tr><th>번호</th><th>상품명</th><th>가격</th></tr>
 <c:forEach var="p" varStatus="i" items="${products}">
-	<tr><td>${i.count}</td><td><a href="/jwbook/pcontrol?action=info&id=${p.id}">${p.name}</a></td><td>${p.price}</td></tr>
+	<tr><td>${i.count}</td><td><a href="/mymvc/productControl?action=info&id=${p.id}">${p.name}</a></td><td>${p.price}</td></tr>
 </c:forEach>
 </table>
 </body>
