@@ -1,0 +1,10 @@
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" version="2.1">
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.2</jsp-version>
+    <short-name>JSPTag</short-name>
+    <function>
+        <name>comma</name>
+        <function-class>ch20.ELMethod</function-class>
+        <function-signature>String comma(int)</function-signature>
+    </function>
+</taglib>
