@@ -20,15 +20,14 @@ public class CalcController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int n1 = Integer.parseInt(request.getParameter("n1"));
 		int n2 = Integer.parseInt(request.getParameter("n2"));
-		long result = 0;
+		String op = request.getParameter("op");
+		Calculator calc = new Calculator();
+		calc.setN1(n1);
+		calc.setN2(n2);
+		calc.setOp(op);
 		
-		switch(request.getParameter("op")) {
-			case "+": result = n1+n2;break;
-			case "-": result = n1-n2;break;
-			case "/": result = n1/n2;break;
-			case "*": result = n1*n2;break;
-		}
-		request.setAttribute("result", result);
+		request.setAttribute("result", calc.calc());
+
 		getServletContext().getRequestDispatcher("/views/calcResult.jsp").forward(request, response);
 	}
 
