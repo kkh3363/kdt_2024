@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProductController
  */
-@WebServlet("/pcontrol")
+@WebServlet("/productControl")
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,13 +29,13 @@ public class ProductController extends HttpServlet {
 		String view = "";
 
 		if(action == null) {
-			getServletContext().getRequestDispatcher("/pcontrol?action=list").forward(request, response);
+			getServletContext().getRequestDispatcher("/productControl?action=list").forward(request, response);
 		} else {
 			switch(action) {
 			case "list": view = list(request, response);break;
 			case "info": view = info(request, response);break;
 			}
-			getServletContext().getRequestDispatcher("/ch08/"+view).forward(request, response);			
+			getServletContext().getRequestDispatcher("/views/"+view).forward(request, response);			
 		}
 	}
 
