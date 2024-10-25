@@ -54,14 +54,22 @@ public class NewsController extends HttpServlet {
 			m = this.getClass().getMethod(action , HttpServletRequest.class);
 			
 			view = (String)m.invoke(this, request);
-			
+			System.out.println("view :: "+view);
 		}catch(NoSuchMethodException e) {
 			e.printStackTrace();
 			ctx.log("요청 action 없음!!");
 			request.setAttribute("error", "action 파라미터가 잘못 되었습니다!!");
 			view = START_PAGE;
 		}catch (Exception e) {
-			
+			e.printStackTrace();
+		}
+		
+		if(view.startsWith("redirect:/")) {
+			String rview = view.substring("redirect:/".length());
+			response.sendRedirect(rview);
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+			dispatcher.forward(request, response);
 		}
 	}
 	//
