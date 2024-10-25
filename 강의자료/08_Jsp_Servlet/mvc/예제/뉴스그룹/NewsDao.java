@@ -22,7 +22,7 @@ public class NewsDao {
 		ResultSet rs = null;
 		String sql = null;
 		try {
-			sql = "select aid, title, PARSEDATETIME(date,'yyyy-MM-dd hh:mm:ss') as cdate from tblnews";
+			sql = "select aid, title, str_to_date(date,'%Y-%m-%d %h:%M:%s') as cdate from tblnews";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next() ){
