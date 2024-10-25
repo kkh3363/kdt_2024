@@ -26,6 +26,7 @@ public class NewsDao {
 		ResultSet rs = null;
 		String sql = null;
 		try {
+			con = pool.getConnection();
 			sql = "select aid, title, str_to_date(date,'%Y-%m-%d %h:%M:%s') as cdate from tblnews";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
