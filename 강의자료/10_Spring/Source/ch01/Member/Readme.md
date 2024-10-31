@@ -9,7 +9,7 @@
         - Member.java
       - repository
         - MemberRepository.java
-        - MemoryRepository.java
+        - MemoryMemberRepository.java
       - Service
           - MemberService.java
   - resources
