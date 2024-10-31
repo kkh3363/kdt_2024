@@ -13,9 +13,10 @@
       - Service
           - MemberService.java
   - resources
-    - home.html
     - templates
-        - createMemberForm.html
-        - memberList.html 
+      - home.html
+      - member
+          - createMemberForm.html
+          - memberList.html 
 
   
