@@ -11,3 +11,7 @@ dependencies {
     	annotationProcessor 'org.projectlombok:lombok'
     }
 ```
+- aop dependencies
+```
+implementation 'org.springframework.boot:spring-boot-starter-aop'
+```
