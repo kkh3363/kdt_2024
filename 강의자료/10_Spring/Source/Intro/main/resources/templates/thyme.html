@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>타임리프 테스트...</title>
+</head>
+<body>
+
+<h1>속성 설정</h1>
+<input type="text" name="name" th:name="userName" /><br>
+<ul>
+    <li>
+        attrappend : <input type="text" class="text" th:attrappend="class=' large'" />
+    </li>
+    <li> attrprepend : <input type="text" class="text" th:attrprepend="class='large '" /></li>
+    <li> classappend : <input type="text" class="text" th:classappend="large" /> </li>
+</ul>
+<ul>
+    <li> th:text <span th:text="${data}"></span></li>
+    <li> 컨텐츠에 직접 [[${data}]] </li>
+</ul>
+
+</body>
+</html>

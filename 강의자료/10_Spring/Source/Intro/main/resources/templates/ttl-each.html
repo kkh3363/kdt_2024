@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr><th>username</th> </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getName()}">name</td>
+    </tr>
+</table>
+<th:block th:each="user : ${users}">
+    <div>
+        사용자 이름1 <span th:text="${user.name}"></span>
+    </div>
+</th:block>
+</body>
+</html>
