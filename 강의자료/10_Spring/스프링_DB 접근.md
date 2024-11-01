@@ -26,5 +26,42 @@ spring.datasource.driver-class-name=org.h2.Driver
 spring.datasource.username=sa
 ```
 
+### 스프링 JdbcTemplate
+- SpringConfig.java
+```
+@Bean
+public MemberRepository memberRepository() {
+  // return new MemoryMemberRepository();
+  // return new JdbcMemberRepository(dataSource);
+  return new JdbcTemplateMemberRepository(dataSource);
+}
+```
 
+### JPA
+- JPA는 기존의 반복 코드는 물론이고, 기본적인 SQL도 JPA가 직접 만들어서 실행해준다.
+- JPA를 사용하면, SQL과 데이터 중심의 설계에서 객체 중심의 설계로 패러다임을 전환을 할 수 있다.
+- JPA를 사용하면 개발 생산성을 크게 높일 수 있다.
 
+- build.gradle
+```
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+  // implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+```
+
+- resources/application.properties
+```
+spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=none
+```
