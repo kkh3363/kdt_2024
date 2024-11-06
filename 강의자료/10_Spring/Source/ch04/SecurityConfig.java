@@ -30,8 +30,12 @@ public class SecurityConfig //extends WebSecurityConfigurerAdapter
                  .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
                  .logoutSuccessUrl("/");
 
-//        http.authorizeHttpRequests((auth) -> auth.anyRequest().authenticated())
-//                .httpBasic(Customizer.withDefaults());
+        http.authorizeHttpRequests(request -> request
+                         .requestMatchers("/", "/members/**", "/item/**", "/images/**","/css/**").permitAll()
+                         .requestMatchers("/admin/*").hasRole("ADMIN")
+                         .anyRequest().authenticated()
+                 )
+                 .httpBasic(withDefaults());
          return http.build();
      }
 
