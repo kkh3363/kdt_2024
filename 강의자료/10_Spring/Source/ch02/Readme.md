@@ -102,3 +102,16 @@ public interface ItemRepository extends JpaRepository<Item, Long>   {
 }
 ```
 ------------------------------------------------
+- main/resources/application-test.properties
+```
+  # Datasource 설정
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.url=jdbc:h2:tcp://localhost/~/shop
+spring.datasource.username=sa
+spring.datasource.password=
+
+# H2 데이터베이스 방언 설정
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+```
+
+-------------------------------------------------------
