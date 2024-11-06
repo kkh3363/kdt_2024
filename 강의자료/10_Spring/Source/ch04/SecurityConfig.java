@@ -29,7 +29,10 @@ public class SecurityConfig //extends WebSecurityConfigurerAdapter
                  .logout()
                  .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
                  .logoutSuccessUrl("/");
-
+//         http.authorizeRequests()
+//                 .mvcMatchers("/", "/members/**", "/item/**", "/images/**").permitAll()
+//                 .mvcMatchers("/admin/**").hasRole("ADMIN")
+//                 .anyRequest().authenticated()
         http.authorizeHttpRequests(request -> request
                          .requestMatchers("/", "/members/**", "/item/**", "/images/**","/css/**").permitAll()
                          .requestMatchers("/admin/*").hasRole("ADMIN")
