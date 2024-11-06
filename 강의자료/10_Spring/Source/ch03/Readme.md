@@ -16,3 +16,8 @@ spring.devtools.restart.enabled=true
 4. liveReload++ 설치
    - 크롬 https://chromewebstore.google.com/detail/livereload++/ciehpookapcdlakedibajeccomagbfab
   
+--------------------------------------------------------------------
+### Thymeleaf Layout Dialect dependency 추가하기
+```
+implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.0.0'
+```
