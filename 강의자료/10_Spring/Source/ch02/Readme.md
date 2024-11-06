@@ -27,7 +27,7 @@ logging.level.org.hibernate.type.descriptor.sql=trace
 spring.jpa.hibernate.ddl-auto=create
 spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
 ```
-
+---------------------------------------
 - Item.java
 ```
 package com.example.myjpa.shop.entity;
@@ -71,8 +71,8 @@ public class Item {
     private LocalDateTime updateTime; //수정 시간
 }
 ```
-
-- ItemREpository.java
+--------------------------------------------
+- ItemRepository.java
 ```
 package com.example.myjpa.shop.repository;
 
@@ -101,3 +101,4 @@ public interface ItemRepository extends JpaRepository<Item, Long>   {
     List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 }
 ```
+------------------------------------------------
