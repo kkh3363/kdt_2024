@@ -43,10 +43,23 @@ public class MemberController {
 
         return "redirect:/";
     }
+    private boolean isAuthenticated() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("authentication : " + authentication);
+        System.out.println("principal : " + authentication.getPrincipal());
 
-    @GetMapping(value = "/login")
-    public String loginMember(){
-        return "/member/memberLoginForm";
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return false;
+        }
+        return authentication.isAuthenticated();
+    }
+    @GetMapping("/login")
+    public  String loginMember(){
+        if (isAuthenticated() )
+            return "redirect:/";
+        else
+            return "/member/memberLoginForm";
     }
 
     @GetMapping(value = "/login/error")
