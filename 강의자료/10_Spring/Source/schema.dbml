@@ -1,0 +1,104 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Enum "item_item_sell_status_enum" {
+  "SELL"
+  "SOLD_OUT"
+}
+
+Table "item" {
+  "price" int [not null]
+  "stock_number" int [not null]
+  "item_id" bigint [pk, not null]
+  "reg_time" datetime(6) [default: NULL]
+  "update_time" datetime(6) [default: NULL]
+  "item_nm" varchar(50) [not null]
+  "created_by" varchar(255) [default: NULL]
+  "modified_by" varchar(255) [default: NULL]
+  "item_detail" tinytext [not null]
+  "item_sell_status" item_item_sell_status_enum [default: NULL]
+}
+
+Table "item_img" {
+  "item_id" bigint [default: NULL]
+  "item_img_id" bigint [pk, not null]
+  "reg_time" datetime(6) [default: NULL]
+  "update_time" datetime(6) [default: NULL]
+  "created_by" varchar(255) [default: NULL]
+  "img_name" varchar(255) [default: NULL]
+  "img_url" varchar(255) [default: NULL]
+  "modified_by" varchar(255) [default: NULL]
+  "ori_img_name" varchar(255) [default: NULL]
+  "repimg_yn" varchar(255) [default: NULL]
+}
+
+Table "cart" {
+  "cart_id" bigint [pk, not null]
+  "member_id" bigint [default: NULL]
+  "reg_time" datetime(6) [default: NULL]
+  "update_time" datetime(6) [default: NULL]
+  "created_by" varchar(255) [default: NULL]
+  "modified_by" varchar(255) [default: NULL]
+}
+Enum "orders_order_status_enum" {
+  "CANCEL"
+  "ORDER"
+}
+
+Table "orders" {
+  "member_id" bigint [default: NULL]
+  "order_date" datetime(6) [default: NULL]
+  "order_id" bigint [pk, not null]
+  "reg_time" datetime(6) [default: NULL]
+  "update_time" datetime(6) [default: NULL]
+  "created_by" varchar(255) [default: NULL]
+  "modified_by" varchar(255) [default: NULL]
+  "order_status" orders_order_status_enum [default: NULL]
+}
+
+
+Table "member" {
+  "member_id" bigint [pk, not null]
+  "reg_time" datetime(6) [default: NULL]
+  "update_time" datetime(6) [default: NULL]
+  "address" varchar(255) [default: NULL]
+  "created_by" varchar(255) [default: NULL]
+  "email" varchar(255) [default: NULL]
+  "modified_by" varchar(255) [default: NULL]
+  "name" varchar(255) [default: NULL]
+  "password" varchar(255) [default: NULL]
+  "role" member_role_enum [default: NULL]
+}
+
+Table "cart_item" {
+  "cart_item_id" bigint [pk, not null]
+  "item_id" bigint [default: NULL]
+  "cart_id" bigint [default: NULL]
+  "count" int [not null]
+  "reg_time" datetime(6) [default: NULL]
+  "update_time" datetime(6) [default: NULL]
+  "created_by" varchar(255) [default: NULL]
+  "modified_by" varchar(255) [default: NULL]
+}
+Table "order_item" {
+   "order_item_id" bigint [pk, not null]
+  "count" int [not null]
+  "order_price" int [not null]
+  "item_id" bigint [default: NULL]
+  "order_id" bigint [default: NULL]
+  "reg_time" datetime(6) [default: NULL]
+  "update_time" datetime(6) [default: NULL]
+  "created_by" varchar(255) [default: NULL]
+  "modified_by" varchar(255) [default: NULL]
+}
+
+ref : item.item_id < item_img.item_id
+
+ref : cart.cart_id < cart_item.cart_id
+ref : item.item_id < cart_item.item_id
+
+ref : orders.order_id < order_item.order_id
+ref : item.item_id < order_item.item_id
+
+ref : member.member_id < orders.member_id
+ref : member.member_id < cart.member_id
