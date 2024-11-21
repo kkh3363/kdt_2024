@@ -6,5 +6,10 @@ insert into article (title, content) values( '제목1', '내용 1');
 insert into article (title, content) values( '제목2', '내용 2');
 insert into article (title, content) values( '제목3', '내용 3');
 ```
+```
+insert into article (title, content, createdAt, updatedAt) values( '제목1', '내용 1', now(), now());
+insert into article (title, content, createdAt, updatedAt) values( '제목2', '내용 2', now(), now());
+insert into article (title, content, createdAt, updatedAt) values( '제목3', '내용 3', now(), now());
+```
 
 - [spring mvc security](https://docs.spring.io/spring-boot/reference/web/spring-security.html#web.security.spring-mvc)
