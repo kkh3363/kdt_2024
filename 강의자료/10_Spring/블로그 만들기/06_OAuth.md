@@ -27,3 +27,7 @@ spring.security.oauth2.client.registration.google.client-id=xxx
 spring.security.oauth.client.registration.google.client-secret=xxx
 spring.security.oauth.client.registration.google.scope=profile,email
 ```
+
+
+### 구글 이미지 다운로드
+- https://developers.google.com/identity/branding-guidelines?hl=ko
