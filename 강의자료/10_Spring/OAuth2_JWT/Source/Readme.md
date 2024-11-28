@@ -30,3 +30,13 @@ spring.security.oauth2.client.provider.naver.token-uri=https://nid.naver.com/oau
 spring.security.oauth2.client.provider.naver.user-info-uri=https://openapi.naver.com/v1/nid/me
 spring.security.oauth2.client.provider.naver.user-name-attribute=response
 ```
+- google
+```
+#registration
+spring.security.oauth2.client.registration.google.client-name=google
+spring.security.oauth2.client.registration.google.client-id=
+spring.security.oauth2.client.registration.google.client-secret=
+spring.security.oauth2.client.registration.google.redirect-uri=http://localhost:8080/login/oauth2/code/google
+spring.security.oauth2.client.registration.google.authorization-grant-type=authorization_code
+spring.security.oauth2.client.registration.google.scope=profile,email
+```
