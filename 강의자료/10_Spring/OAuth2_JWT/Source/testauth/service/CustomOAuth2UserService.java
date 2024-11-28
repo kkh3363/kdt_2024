@@ -1,9 +1,6 @@
 package com.kdt.testauth.service;
 
-import com.kdt.testauth.dto.CustomOAuth2User;
-import com.kdt.testauth.dto.GoogleResponse;
-import com.kdt.testauth.dto.OAuth2Response;
-import com.kdt.testauth.dto.UserDto;
+import com.kdt.testauth.dto.*;
 import com.kdt.testauth.entity.UserEntity;
 import com.kdt.testauth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +12,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationResponse;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -30,6 +29,9 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         OAuth2Response oAuth2Response = null;
         if (registrationId.equals("google") ){
             oAuth2Response = new GoogleResponse( oAuth2User.getAttributes());
+        }
+        else if ( registrationId.equals("naver")) {
+            oAuth2Response = new NaverResponse( (Map)oAuth2User.getAttributes().get("response"));
         }
         else {
             return null;
