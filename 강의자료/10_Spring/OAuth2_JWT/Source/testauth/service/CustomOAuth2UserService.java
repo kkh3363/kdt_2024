@@ -1,5 +1,6 @@
 package com.kdt.testauth.service;
 
+import com.kdt.testauth.dto.CustomOAuth2User;
 import com.kdt.testauth.dto.GoogleResponse;
 import com.kdt.testauth.dto.OAuth2Response;
 import com.kdt.testauth.dto.UserDto;
@@ -33,7 +34,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         userDto.setUsename(userName);
         userDto.setRole("ROLE_USER");
 
-        return oAuth2User;
-        //return new CustomOAuth2User(userDto);
+
+        return new CustomOAuth2User(userDto);
     }
 }
