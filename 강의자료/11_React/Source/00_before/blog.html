@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Html5 Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready( function(){
+            $('.outer-menu-item').hover(function (){
+                $(this).find('.inner-menu').show();
+            }, function (){
+                $(this).find('.inner-menu').hide();
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="page-wrapper">
@@ -16,23 +27,22 @@
     <nav id="main-navigation">
         <div class="pull-left">
             <ul class="outer-menu">
-                <li class="menu-title"> 
+                <li class="outer-menu-item"> 
                     <span class="menu-title"> HTML5</span>
                     <ul class="inner-menu">
                         <li class="inner-menu-item"><a href="#">html 1</a></li>
                         <li class="inner-menu-item"><a href="#">html 2</a></li>
                     </ul>
                 </li>
-            
-                <li class="menu-title"> 
+                <li class="outer-menu-item"> 
                     <span class="menu-title"> CSS</span>
                     <ul class="inner-menu">
                         <li class="inner-menu-item"><a href="#">css 1</a></li>
                         <li class="inner-menu-item"><a href="#">css 2</a></li>
                     </ul>
                 </li>
-           
-                <li class="menu-title"> 
+            
+                <li class="outer-menu-item"> 
                     <span class="menu-title"> Javascript</span>
                     <ul class="inner-menu">
                         <li class="inner-menu-item"><a href="#">js 1</a></li>
@@ -47,7 +57,7 @@
             <div class="search-bar">
                 <form>
                     <input type="text" class="input-search">
-                    <input type="sumit" class="input-search-submit" value="Search">
+                    <input type="submit" class="input-search-submit" value="Search">
                 </form>
             </div>
         </div>
