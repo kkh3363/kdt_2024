@@ -9,3 +9,10 @@ npm list
 +-- react@18.3.1
 `-- web-vitals@4.2.4
 ```
+- 설치
+```
+설치
+npm install web-vitals@4.2.4
+삭제
+npm uninstall web-vitals
+```
