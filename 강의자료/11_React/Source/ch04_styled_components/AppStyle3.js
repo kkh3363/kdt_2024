@@ -18,21 +18,23 @@ function Button({ children, color, background }) {
     );
   }
   const StyledButton2 = styled.button`
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 1rem;
-  line-height: 1.5;
-  border: 1px solid lightgray;
-
-  ${ (props)  =>{
-        props.primary && 
-        css`
-            color: white;
-            background: navy;
-            border-color: navy;
-        `}
-    }
-`;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid lightgray;
+    color: ${(props) => props.color || "gray"};
+    background: ${(props) => props.background || "white"};
+    ${ (props)  =>{
+            props.primary && 
+            css`
+                color: white;
+                background: navy;
+                border-color: navy;
+            `}
+        }
+    `;
+    
   function Button2({ children, ...props }) {
     return (
       <StyledButton2 {...props} Î>
