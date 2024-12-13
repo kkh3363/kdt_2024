@@ -18,7 +18,7 @@ function reducer(curState, action){
 }
 const store = createStore(reducer);
 
-function Left2(props){
+function Left2(){
     return (
         <div>
             <h3>Left 2 :   </h3>
@@ -26,7 +26,7 @@ function Left2(props){
         </div>
     )
 }
-function Left3(props){
+function Left3(){
     function f(state){
         return state.number;
     }
@@ -37,7 +37,7 @@ function Left3(props){
         </div>
     )
 }
-function Left1(props){
+function Left1(){
     const number = useSelector((state)=>state.number);
     return (
         <div>
@@ -46,7 +46,7 @@ function Left1(props){
         </div>
     )
 }
-function Right1(props){
+function Right1(){
     return (
         <div>
             <h3>Right 1  </h3>
@@ -54,7 +54,7 @@ function Right1(props){
         </div>
     )
 }
-function Right2(props){
+function Right2(){
     return (
         <div>
             <h3>Right 2:  </h3>
@@ -62,7 +62,7 @@ function Right2(props){
         </div>
     )
 }
-function Right3(props){
+function Right3(){
     const dispatch = useDispatch();
 
     return (
