@@ -66,3 +66,9 @@ button:hover {
   padding: 16px;
   margin: auto;
 }
+
+.invalid_msg {
+  color: red;
+  display: block;
+  margin: 0px 0px 20px 20px;
+}
