@@ -1,0 +1,2 @@
+- npm install react-quill --save
+- 
