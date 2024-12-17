@@ -7,6 +7,10 @@ body {
 h2 {
   text-align: center;
 }
+input,
+select {
+  margin: 20px 5px;
+}
 /* Full-width input fields */
 input[type="text"],
 input[type="email"],
@@ -23,6 +27,9 @@ input[type="text"]:focus,
 input[type="password"]:focus {
   background-color: #ddd;
   outline: none;
+}
+input[type="radio"] {
+  vertical-align: middle;
 }
 
 hr {
