@@ -73,4 +73,20 @@ npm install json-server --save --legacy-peer-deps
 - Topics 처리
   - 강의자료/11_React/Source/ch09_Nextjs/nextapp/src_app/layout_3.js
 
-- 
+- src/app/read/[id]/page.js
+```
+export default async function Read({ props }) {
+  const id = params.id;
+  const resp = await fetch(`http://localhost:9999/topics/${id}`, {
+    cache: "no-cache",
+  });
+  const topic = await resp.json();
+  return (
+    <>
+      <h2>{topic.title}</h2>
+      {topic.body}
+    </>
+  );
+}
+
+```
