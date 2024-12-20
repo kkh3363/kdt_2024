@@ -1,9 +1,8 @@
-export default function Layout(props) {
+export default function Read(props) {
   return (
-    <form>
-      <h2>Create</h2>
-      {props.children}
-    </form>
+    <>
+      <h2>Read</h2>
+      parameter : {props.params.id}
+    </>
   );
 }
-[]
