@@ -75,7 +75,7 @@ npm install json-server --save --legacy-peer-deps
 
 - src/app/read/[id]/page.js
 ```
-export default async function Read({ props }) {
+export default async function Read({ params }) {
   const id = params.id;
   const resp = await fetch(`http://localhost:9999/topics/${id}`, {
     cache: "no-cache",
