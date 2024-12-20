@@ -71,4 +71,6 @@ npm install json-server --save --legacy-peer-deps
 
 
 - Topics 처리
+  - 강의자료/11_React/Source/ch09_Nextjs/nextapp/src_app/layout_3.js
 
+- 
