@@ -1,13 +1,14 @@
 "use client";
 
-import { useRouter } from "next/router";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function Update(props) {
+export default function Update() {
+  const params = useParams();
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const id = props.params.id;
+  const id = params.id;
 
   async function refresh() {
     const resp = await fetch(`http://localhost:9999/topics/${id}`);
@@ -27,14 +28,17 @@ export default function Update(props) {
           const title = event.target.title.value;
           const body = event.target.body.value;
           const resp = await fetch(`http://localhost:9999/topics/${id}`, {
-            method :'PATCH',
-            header : {
-              'Content-Type': 'application/json'
+            method: "PATCH",
+            header: {
+              "Content-Type": "application/json",
             },
-            body : JSON.stringify({title, body})
+            body: JSON.stringify({ title, body }),
           });
-          const topic = resp.json();
+          const topic = await resp.json();
+          //const routeString = "/read/" + topic.id;
           router.push(`/read/${topic.id}`);
+          //router.push(routeString);
+
           router.refresh();
         }}
       >
