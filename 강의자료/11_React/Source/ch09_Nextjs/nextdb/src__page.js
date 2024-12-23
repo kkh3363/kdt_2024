@@ -1,6 +1,6 @@
 import Image from "next/image";
 import executeQuery from "./_lib/db.tsx";
-export default async function Home() {
+export default async function Home() {
   const sql = "select * from jspdb.tblmember";
   const data = await executeQuery(sql, "");
   const getdata = JSON.parse(JSON.stringify(data));
