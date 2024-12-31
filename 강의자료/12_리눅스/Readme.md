@@ -10,3 +10,18 @@
 - systemctl set-default graphical.target
 - systemctl get-default
 - reboot
+### node.js 설치
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh  | bash
+source ~/.bashrc
+ nvm --version
+ nvm list-remote
+
+nvm install v22.12.0
+nvm list
+nvm use v22.12.0
+nvm -v
+
+ sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
+$ sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+```
