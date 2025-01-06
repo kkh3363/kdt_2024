@@ -5,4 +5,4 @@
 - [Flutter](https://docs.flutter.dev/get-started/learn-flutter)
 - [Dart Doc](https://dart.dev/language)
 ### 플루터 강의 자료
-- [저자 깃허브 소스](https://github.com/codefactory-co/flutter-golden-rabbit-novice-v2/tree/main)
+- [저자 깃허브 소스](https://github.com/codefactory-co/golden-rabbit-flutter-novice/tree/main)
