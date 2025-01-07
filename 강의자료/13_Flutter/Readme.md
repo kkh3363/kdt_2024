@@ -6,3 +6,7 @@
 - [Dart Doc](https://dart.dev/language)
 ### 플루터 강의 자료
 - [저자 깃허브 소스](https://github.com/codefactory-co/flutter-golden-rabbit-novice-v3)
+
+
+### jdk 변경
+- flutter config --jdk-dir " "
