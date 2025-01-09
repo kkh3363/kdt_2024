@@ -1,3 +1,13 @@
+## 다음과 같은 오류가 나면 수정하세요...
+```
+AILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':isar_flutter_libs'.
+> Could not create an instance of type com.android.build.api.variant.impl.LibraryVariantBuilderImpl.
+   > Namespace not specified. Specify a namespace in the module's build file: C:\Users\PC\AppData\Local\Pub\Cache\hosted\pub.dev\isar_flutter_libs-3.1.0+1\android\build.gradle. See https://d.android.com/r/tools/upgrade-assistant/set-namespace for information about setting the namespace.
+```
+
 - android\build.gradle
 ```
 allprojects {
