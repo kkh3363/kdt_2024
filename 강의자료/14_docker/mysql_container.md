@@ -1,3 +1,4 @@
+```
 docker pull mysql
 
 docker pull mysql:8.0.40
@@ -15,3 +16,4 @@ create user jspuser@'%' identified by '1234';
 create database jspdb;
 grant all privileges on jspdb.* to jspuser@'%' with grant option;
 commit;
+```
