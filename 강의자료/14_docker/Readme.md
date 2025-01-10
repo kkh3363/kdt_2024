@@ -7,3 +7,7 @@
 
 ### 도커 참고사이트
 - [도커네트워크](https://captcha.tistory.com/70)
+
+### 리눅스 
+- 네트워크 툴 설치
+  - dnf install net-tools
