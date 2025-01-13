@@ -1,3 +1,7 @@
+### 관련 링크
+- [ AWS ](https://aws.amazon.com/ko/)
+
+  
 ### AWS 자료
 - [AWS 강좌]
   - [ 1 ](https://www.youtube.com/watch?v=JjiYqBl2328&list=PLfth0bK2MgIan-SzGpHIbfnCnjj583K2m&index=1)
