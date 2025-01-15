@@ -11,5 +11,8 @@
   , [ 5 ](https://www.youtube.com/watch?v=lcly_aIq1KI&list=PLfth0bK2MgIan-SzGpHIbfnCnjj583K2m&index=6)
 , [ 6 ](https://www.youtube.com/watch?v=hb_4Tf6bAtY&list=PLfth0bK2MgIan-SzGpHIbfnCnjj583K2m&index=7)
 , [ 7 ](https://www.youtube.com/watch?v=rdlHszMujnw&list=PLfth0bK2MgIan-SzGpHIbfnCnjj583K2m&index=8)
+  - S3 강의
+    [ 20 ](https://www.youtube.com/watch?v=LazOCTfdSeQ&list=PLfth0bK2MgIan-SzGpHIbfnCnjj583K2m&index=21)
+    
 - [생활코딩 aws](https://www.youtube.com/watch?v=JJSghRnWbag&list=PLuHgQVnccGMDNWIEgnXjaZ3jgbIo5zQGi)
 - https://pyrasis.com/book/TheArtOfAmazonWebServices
